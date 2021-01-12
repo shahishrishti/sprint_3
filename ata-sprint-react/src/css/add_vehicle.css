@@ -98,7 +98,7 @@ html, body {
     flex-wrap: wrap;
     justify-content: space-between;
     }
-    .name-item input, {
+    .name-item input {
     width: calc(50% - 20px);
     }
   }
