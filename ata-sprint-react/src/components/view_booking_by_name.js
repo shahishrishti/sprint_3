@@ -10,9 +10,7 @@ export const ViewBookingByNameComponent = (props) =>{
                 </div>
                 <div class="item">
                     <p>Passenger User name</p>
-                <div class="name-item">
                     <input type="text" name="name" placeholder="Enter your name" />
-                </div>
                 </div>
 
                 <div class="btn-block">
