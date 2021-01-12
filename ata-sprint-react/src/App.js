@@ -12,9 +12,9 @@ import { ViewBookingByNameComponent } from './components/view_booking_by_name';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
-import { ViewDriverByNameComponent } from './components/view_driver_by_name';
-import {ViewDriverByLicensenoComponent} from './components/view_driver_by_license_no';
+import { ViewDriverComponent } from './components/view_driver';
 import { ViewBookingComponent } from "./components/view_booking";
+
 function App() {
   return (
       <Router>
@@ -32,10 +32,8 @@ function App() {
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/editvehicle">Edit Vehicle</Link>&nbsp;&nbsp;&nbsp;
-              <Link to="/viewdriverbyname">View Driver By Name</Link> &nbsp;&nbsp;&nbsp;
-              <Link to="/viewdriverbylicenseno">View Driver By Licenseno</Link> &nbsp;&nbsp;&nbsp;
-              <Link to="/booking">View Booking</Link>
-
+              <Link to="/viewdriver">View Driver</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/booking">View Booking</Link>&nbsp;&nbsp;&nbsp;
 
           <hr />
   
@@ -76,11 +74,10 @@ function App() {
             <Route path="/editvehicle">
               <ModifyVehicleComponent/>
             </Route>
-            <Route path="/viewdriverbyname">
-              <ViewDriverByNameComponent/>
-            </Route>
-            <Route path="/viewdriverbylicenseno">
-              <ViewDriverByLicensenoComponent/>
+            
+            
+            <Route path="/viewdriver">
+              <ViewDriverComponent/>
             </Route>
             <Route path="/booking">
               <ViewBookingComponent/>
