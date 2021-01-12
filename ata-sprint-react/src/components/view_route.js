@@ -1,3 +1,4 @@
+import '../css/view_route.css'
 export const ViewRouteComponent = (props) => {
     return (
         <div class="testbox">
@@ -29,21 +30,30 @@ export const ViewRouteComponent = (props) => {
                     <button type="submit" href="#">View</button>
                 </div>
                 <div class="item">
-                    <table>
+                    <table class="content-table">
                         <thead>
                             <tr>
-                                <td>Source</td>
-                                <td>Destination</td>
-                                <td>Distance</td>
-                                <td>Action</td>
+                                <th scope="col">SrNo.</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <th scope="row">1</th>
                                 <td>Mumbai</td>
                                 <td>Pune</td>
-                                <td>200</td>
-                                <td><button type="submit" href="#">Edit</button><button type="submit" href="#">Delete</button></td>
+                                <td>300</td>
+                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Banglore</td>
+                                <td>Hyderabad</td>
+                                <td>450</td>
+                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
