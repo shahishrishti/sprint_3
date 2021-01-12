@@ -12,6 +12,7 @@ export const UpdateRouteComponent = (props) =>{
       <div class="item">
         <p>Source</p>
         <select required>
+          <option value="0" hidden>Select Source</option>
           <option value="1">Mumbai</option>
           <option value="2">Pune</option>
           <option value="3">Nashik</option>
@@ -23,6 +24,7 @@ export const UpdateRouteComponent = (props) =>{
       <div class="item">
         <p>Destination</p>
         <select required>
+          <option value="0" hidden>Select Destination</option>
           <option value="1">Pune</option>
           <option value="2">Mumbai</option>
           <option value="3">Nagpur</option>
