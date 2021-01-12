@@ -1,5 +1,5 @@
 const initialState = [];
-const vehicleReducer = (state=initialState, action) =>{
+const driverReducer = (state=initialState, action) =>{
     switch(action.type){
         case 'EDIT_DRIVER':
             return action.payload;
