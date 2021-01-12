@@ -20,35 +20,53 @@ export const ViewVehicleComponent = (props) => {
                    <div class="btn-block">
                       <button type="submit" href="/">View</button>
                    </div>
-                   <table class="center">
-                     <tr>
-                       <th>Vehicle No</th>
-                       <th>Vehicle Name</th>
-                       <th>Vehicle Type</th>
-                       <th>Seating Capacity</th>
-                       <th>Fare per Km</th>
-                       <th>Route</th>
-                       <th>Action</th>
-                     </tr>
-                     <tr>
-                       <td>MH 50 AX 4440</td>
-                       <td>Suzuki</td>
-                       <td>Car</td>
-                       <td>4</td>
-                       <td>40</td>
-                       <td>Mumbai-Pune</td>
-                       <td><button type="submit" href="#">Edit</button><button type="submit" href="#">Delete</button></td>
-                     </tr>
-                     <tr>
-                       <td>MH 50 AX 2345</td>
-                       <td>Tata</td>
-                       <td>Bus</td>
-                       <td>20</td>
-                       <td>30</td>
-                       <td>Delhi-Nashik</td>
-                       <td><button type="submit" href="#">Edit</button>&nbsp;<button type="submit" href="#">Delete</button></td>
-                     </tr>
-                   </table>
+                   <table class="content-table">
+                    <thead>
+                        <tr>
+                        <th scope="col">SrNo.</th>
+                        <th scope="col">Vehicle Name</th>
+                        <th scope="col">Vehicle No.</th>
+                        <th scope="col">Vehicle Type</th>
+                        <th scope="col">Seating Capacity</th>
+                        <th scope="col">Fare per Km</th>
+                        <th scope="col">Route</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        
+                        <td>Suzuki</td>
+                        <td>MH 01 AX 1234</td>
+                        <td>Car</td>
+                        <td>4</td>
+                        <td>40</td>
+                        <td>Mumbai-Pune</td>
+                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Tata</td>
+                        <td>MH 50 AB 2643</td>
+                        <td>Bus</td>
+                        <td>20</td>
+                        <td>30</td>
+                        <td>Pune-Mumbai</td>
+                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td>Swift</td>
+                        <td>MH 12 XD 2748</td>
+                        <td>Car</td>
+                        <td>4</td>
+                        <td>40</td>
+                        <td>Pune-Mumbai</td>
+                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
                   
                     
                 </form>
