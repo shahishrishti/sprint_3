@@ -1,7 +1,7 @@
 import '../css/add_route.css'
 export const AddRouteComponent = (props) => {
     return (
-        <div>
+        <div class="testbox">
             <form action="/">
                 <div class="banner">
                     <h1>Add Route</h1>
