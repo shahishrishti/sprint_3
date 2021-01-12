@@ -1,4 +1,4 @@
- import './App.css';
+import './App.css';
 import { ModifyDriverComponent } from './components/modify_driver'
 import {AddBookingComponent} from './components/add_booking'
 import {  BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
@@ -11,6 +11,9 @@ import { ViewBookingByNameAndStatusComponent } from './components/view_booking_b
 import { ViewBookingByNameComponent } from './components/view_booking_by_name';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
+import { ModifyVehicleComponent } from './components/modify_vehicle';
+import { ViewDriverByNameComponent } from './components/view_driver_by_name';
+import {ViewDriverByLicensenoComponent} from './components/view_driver_by_license_no';
 import { ViewBookingComponent } from "./components/view_booking";
 function App() {
   return (
@@ -27,8 +30,13 @@ function App() {
               <Link to="/viewbookingbyname">View Booking By Name</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewbookingbystatus">View Booking By Status</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
-              <Link to="/editroute">Edit Route</Link>&nbsp;&nbsp;&nbsp;
+              <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/editvehicle">Edit Vehicle</Link>&nbsp;&nbsp;&nbsp;
+              <Link to="/viewdriverbyname">View Driver By Name</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/viewdriverbylicenseno">View Driver By Licenseno</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/booking">View Booking</Link>
+
+
           <hr />
   
         <Switch>
@@ -53,9 +61,6 @@ function App() {
             <Route path="/editdriver">
               <ModifyDriverComponent/>
             </Route>
-            <Route path="/booking">
-              <ViewBookingComponent/>
-            </Route>
             <Route path="/viewbookingbyname">
               <ViewBookingByNameComponent/>
             </Route>
@@ -68,7 +73,18 @@ function App() {
             <Route path="/editroute">
               <UpdateRouteComponent/>
             </Route>
-            
+            <Route path="/editvehicle">
+              <ModifyVehicleComponent/>
+            </Route>
+            <Route path="/viewdriverbyname">
+              <ViewDriverByNameComponent/>
+            </Route>
+            <Route path="/viewdriverbylicenseno">
+              <ViewDriverByLicensenoComponent/>
+            </Route>
+            <Route path="/booking">
+              <ViewBookingComponent/>
+            </Route>
           </Switch> 
           </div>       
           </Router>
