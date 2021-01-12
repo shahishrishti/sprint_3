@@ -11,6 +11,8 @@ import { ViewBookingByNameAndStatusComponent } from './components/view_booking_b
 import { ViewBookingByNameComponent } from './components/view_booking_by_name';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
+import { ViewDriverByNameComponent } from './components/view_driver_by_name';
+import {ViewDriverByLicensenoComponent} from './components/view_driver_by_license_no';
 function App() {
   return (
       <Router>
@@ -26,7 +28,11 @@ function App() {
               <Link to="/viewbookingbyname">View Booking By Name</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewbookingbystatus">View Booking By Status</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
-              <Link to="/editroute">Edit Route</Link>
+              <Link to="/editroute">Edit Route</Link>&nbsp;&nbsp;&nbsp;
+              <Link to="/viewdriverbyname">View Driver By Name</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/viewdriverbylicenseno">View Driver By License Number</Link> &nbsp;&nbsp;&nbsp;
+
+
           <hr />
   
         <Switch>
@@ -62,6 +68,12 @@ function App() {
             </Route>
             <Route path="/editroute">
               <UpdateRouteComponent/>
+            </Route>
+            <Route path="/viewdriverbyname">
+              <ViewDriverByNameComponent/>
+            </Route>
+            <Route path="/viewdriverbylicenseno">
+              <ViewDriverByLicensenoComponent/>
             </Route>
           </Switch> 
           </div>       
