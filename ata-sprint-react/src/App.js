@@ -1,12 +1,74 @@
-import logo from './logo.svg';
 import './App.css';
+<<<<<<< HEAD
 import { ModifyDriverComponent } from './components/modify_driver';
+=======
+<<<<<<< HEAD
+import {AddBookingComponent} from './components/add_booking';
+>>>>>>> 837dca2ae94b1ccd76fde247526f141ea7238bfe
 
+=======
+import {  BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import { AddRouteComponent } from './components/add_route'
+import { AddVehicleComponent } from './components/add_vehicle'
+<<<<<<< HEAD
+import {AddDriverComponent} from './components/add_driver'
+=======
+import { ViewRouteComponent } from './components/view_route'
+import { HomePageComponent } from './components/home_page'
+>>>>>>> 5e2e53532f39081702517a950e971bbaf8ff128f
+>>>>>>> f6d1676d7bfb93ce85eef0e3203e47c64d53b1ce
 function App() {
   return (
+    <Router>
     <div className="App">
+<<<<<<< HEAD
       <ModifyDriverComponent></ModifyDriverComponent>
+=======
+<<<<<<< HEAD
+        {/*<AddVehicleComponent/>}
+      {/* <AddRouteComponent/> */}
+      <AddDriverComponent/>
+=======
+<<<<<<< HEAD
+      <AddBookingComponent/>
+>>>>>>> f6d1676d7bfb93ce85eef0e3203e47c64d53b1ce
+>>>>>>> 837dca2ae94b1ccd76fde247526f141ea7238bfe
     </div>
+=======
+      <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/addroute">Add Route</Link>
+          </li>
+          <li>
+            <Link to="/viewroute">View Route</Link>
+          </li>
+          <li>
+            <Link to="/addvehicle">Add Vehicle</Link>
+          </li>
+        </ul>
+
+        <hr />
+
+      <Switch>
+          <Route exact path="/">
+            <HomePageComponent />
+          </Route>
+          <Route path="/addroute">
+            <AddRouteComponent/>
+          </Route>
+          <Route path="/viewroute">
+            <ViewRouteComponent/>
+          </Route>
+          <Route path="/addvehicle">
+            <AddVehicleComponent/>
+          </Route>
+        </Switch> 
+        </div>       
+        </Router>
+>>>>>>> 5e2e53532f39081702517a950e971bbaf8ff128f
   );
 }
 
