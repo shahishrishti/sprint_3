@@ -13,10 +13,6 @@ export const AddBookingComponent = (props) =>{
                         <input type="text" name="name" placeholder="Enter your name" />
                 </div>
                 <div class="item">
-                    <p>Phone</p>
-                    <input type="text" name="phone" placeholder="### ### ####"/>
-                </div>
-                <div class="item">
                     <p>Booking Date</p>
                     <input type="date" id="bookingdate" name="bookingdate"/>
                 </div>
