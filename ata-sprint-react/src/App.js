@@ -7,7 +7,8 @@ import { AddVehicleComponent } from './components/add_vehicle';
 import {AddDriverComponent} from './components/add_driver';
 import { ViewRouteComponent } from './components/view_route';
 import { HomePageComponent } from './components/home_page';
-import {UpdateRouteComponent} from './components/update_route';
+import { ViewBookingByNameComponent } from './components/view_booking_by_name'
+import { ViewBookingByNameAndStatusComponent } from './components/view_booking_by_name_and_status'
 function App() {
   return (
       <Router>
@@ -23,13 +24,16 @@ function App() {
               <Link to="/addroute">Add Route</Link>
             </li>
             <li>
-              <Link to="/editroute">Edit Route</Link>
-            </li>
-            <li>
               <Link to="/addvehicle">Add Vehicle</Link>
             </li>
             <li>
               <Link to="/addbooking">Add Booking</Link>
+            </li>
+            <li>
+              <Link to="/viewbookingbyname">View booking by name</Link>
+            </li>
+            <li>
+              <Link to="/viewbookingbynameandstatus">View booking by name and status</Link>
             </li>
             <li>
               <Link to="/adddriver">Add Driver</Link>
@@ -37,7 +41,6 @@ function App() {
             <li>
               <Link to="/editdriver">Edit Driver</Link>
             </li>
-
           </ul>
   
           <hr />
@@ -52,14 +55,17 @@ function App() {
             <Route path="/addroute">
               <AddRouteComponent/>
             </Route>
-            <Route path="/editroute">
-              <UpdateRouteComponent/>
-            </Route>
             <Route path="/addvehicle">
               <AddVehicleComponent/>
             </Route>
             <Route path="/addBooking">
               <AddBookingComponent/>
+            </Route>
+            <Route path="/viewbookingbyname">
+              <ViewBookingByNameComponent/>
+            </Route>
+            <Route path="/viewbookingbynameandstatus">
+              <ViewBookingByNameAndStatusComponent/>
             </Route>
             <Route path="/adddriver">
               <AddDriverComponent/>
