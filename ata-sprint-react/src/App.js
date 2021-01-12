@@ -13,7 +13,7 @@ import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
 import { ViewDriverComponent } from './components/view_driver';
-
+import { ViewVehicleComponent } from './components/view_vehicle'
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
               <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/editvehicle">Edit Vehicle</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/viewdriver">View Driver</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/viewvehicle">View Vehicle</Link>
 
 
           <hr />
@@ -74,10 +75,11 @@ function App() {
             <Route path="/editvehicle">
               <ModifyVehicleComponent/>
             </Route>
-            
-            
             <Route path="/viewdriver">
               <ViewDriverComponent/>
+            </Route>
+            <Route path="/viewvehicel">
+              <ViewVehicleComponent/>
             </Route>
           </Switch> 
           </div>       
