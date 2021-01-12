@@ -6,6 +6,7 @@ import { AddRouteComponent } from './components/add_route'
 import { AddVehicleComponent } from './components/add_vehicle';
 import {AddDriverComponent} from './components/add_driver';
 import { ViewRouteComponent } from './components/view_route';
+import { ViewVehicleComponent } from './components/view_vehicle';
 import { HomePageComponent } from './components/home_page';
 import { ViewBookingByNameAndStatusComponent } from './components/view_booking_by_name_and_status';
 import { ViewBookingByNameComponent } from './components/view_booking_by_name';
@@ -27,6 +28,7 @@ function App() {
               <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewroute">View Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/addroute">Add Route</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/viewvehicle">View Vehicle</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/addvehicle">Add Vehicle</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/addbooking">Add Booking</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/adddriver">Add Driver</Link> &nbsp;&nbsp;&nbsp;
@@ -55,6 +57,9 @@ function App() {
             </Route>
             <Route path="/addroute">
               <AddRouteComponent/>
+            </Route>
+            <Route path="/viewvehicle">
+              <ViewVehicleComponent/>
             </Route>
             <Route path="/addvehicle">
               <AddVehicleComponent/>
