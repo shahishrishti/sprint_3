@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App'
 import reportWebVitals from './reportWebVitals';
+import routeReducer from './reducers/route_reducer';
+import vehicleReducer from './reducers/vehicle_reducer';
+import driverReducer from './reducers/driver_reducer';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+
+
+let allReducers = combineReducers({'routeReducer':routeReducer, 'vehicleReducer':vehicleReducer, 'driverReducer':driverReducer});
 
 ReactDOM.render(
   <React.StrictMode>

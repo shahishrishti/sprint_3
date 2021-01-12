@@ -13,3 +13,5 @@ const vehicleReducer = (state=initialState, action) =>{
             return [];
     }
 }
+
+export default vehicleReducer;
