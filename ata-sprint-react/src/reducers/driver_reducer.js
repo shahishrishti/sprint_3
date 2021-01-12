@@ -9,7 +9,7 @@ const driverReducer = (state=initialState, action) =>{
             return action.payload;
         case 'DELETE_DRIVER':
             return action.payload;
-       
+
         default:
             return [];
     }
