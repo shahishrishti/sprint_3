@@ -14,11 +14,7 @@ import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
 import { ViewDriverComponent } from './components/view_driver';
-<<<<<<< HEAD
-import { ViewVehicleComponent } from './components/view_vehicle'
-=======
 import { ViewBookingComponent } from "./components/view_booking";
->>>>>>> 1207cbe44b21e075fc0e5787084e7ba1e7b11344
 
 function App() {
   return (
@@ -39,13 +35,7 @@ function App() {
               <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/editvehicle">Edit Vehicle</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/viewdriver">View Driver</Link> &nbsp;&nbsp;&nbsp;
-<<<<<<< HEAD
-              <Link to="/viewvehicle">View Vehicle</Link>
-
-=======
               <Link to="/booking">View Booking</Link>&nbsp;&nbsp;&nbsp;
->>>>>>> 1207cbe44b21e075fc0e5787084e7ba1e7b11344
-
           <hr />
   
         <Switch>
@@ -91,13 +81,8 @@ function App() {
             <Route path="/viewdriver">
               <ViewDriverComponent/>
             </Route>
-<<<<<<< HEAD
-            <Route path="/viewvehicel">
-              <ViewVehicleComponent/>
-=======
             <Route path="/booking">
               <ViewBookingComponent/>
->>>>>>> 1207cbe44b21e075fc0e5787084e7ba1e7b11344
             </Route>
           </Switch> 
           </div>       
