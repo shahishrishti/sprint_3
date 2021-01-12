@@ -11,6 +11,7 @@ import { ViewBookingByNameAndStatusComponent } from './components/view_booking_b
 import { ViewBookingByNameComponent } from './components/view_booking_by_name';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
+import { ViewBookingComponent } from "./components/view_booking";
 function App() {
   return (
       <Router>
@@ -26,7 +27,8 @@ function App() {
               <Link to="/viewbookingbyname">View Booking By Name</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewbookingbystatus">View Booking By Status</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
-              <Link to="/editroute">Edit Route</Link>
+              <Link to="/editroute">Edit Route</Link>&nbsp;&nbsp;&nbsp;
+              <Link to="/booking">View Booking</Link>
           <hr />
   
         <Switch>
@@ -51,6 +53,9 @@ function App() {
             <Route path="/editdriver">
               <ModifyDriverComponent/>
             </Route>
+            <Route path="/booking">
+              <ViewBookingComponent/>
+            </Route>
             <Route path="/viewbookingbyname">
               <ViewBookingByNameComponent/>
             </Route>
@@ -63,6 +68,7 @@ function App() {
             <Route path="/editroute">
               <UpdateRouteComponent/>
             </Route>
+            
           </Switch> 
           </div>       
           </Router>
