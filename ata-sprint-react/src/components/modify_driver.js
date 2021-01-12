@@ -23,7 +23,7 @@ export const ModifyDriverComponent = (props) => {
                       </div>
                       <div class="item">
                           <p>Contact No.</p>
-                          <input type="number" name="contact_no" placeholder="Enter Contact No" />
+                          <input type="number" name="contact_no" placeholder="### ### ####" />
                       </div>
                       <div class="btn-block">
                           <button type="submit" href="/">UPDATE</button>
