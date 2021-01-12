@@ -6,15 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import routeReducer from './reducers/route_reducer';
 import vehicleReducer from './reducers/vehicle_reducer';
 import driverReducer from './reducers/driver_reducer';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-
+import ReduxThunk from 'redux-thunk';
 
 let allReducers = combineReducers({'routeReducer':routeReducer, 'vehicleReducer':vehicleReducer, 'driverReducer':driverReducer});
+let store = createStore(allReducers,
+  compose(applyMiddleware(ReduxThunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+store.subscribe(()=>console.log('Current State: ', store.getState()));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
