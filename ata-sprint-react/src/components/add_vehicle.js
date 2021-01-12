@@ -1,6 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
-
+import '../css/add_vehicle.css'
 export const AddVehicleComponent = (props) =>{
     return (
      <body>
@@ -10,10 +9,12 @@ export const AddVehicleComponent = (props) =>{
                  <h1>Add Vehicle</h1>
               </div>
               <div class="item">
+                  <p>Vehicle No.</p>
+                  <input type="text" name="vehicle_no" placeholder="Enter vehicle No." />
+               </div>
+              <div class="item">
                  <p>Vehicle name</p>
-                  <div class="name-item">
-                    <input type="text" name="name" placeholder="Enter vehicle name" />
-                  </div>
+                  <input type="text" name="name" placeholder="Enter vehicle name" />
               </div>
               <div class="item">
                <p>Vehicle Type</p>
@@ -22,13 +23,9 @@ export const AddVehicleComponent = (props) =>{
                     <option value="2">Bus</option>
                  </select>
              </div>
-             
-               <div class="name-item">
-                  <p>Vehicle No.</p>
-                  <input type="text" name="vehicle_no" placeholder="Enter vehicle No." />
-               </div>
                <div class="item">
-                  <input type="number" name="fare_per_km" placeholder="Enter Fare Per Km" step="1"></input>
+                  <p>Fare</p>
+                  <input type="number" name="fare_per_km" placeholder="Enter Fare Per Km" min="20" step="0.5"></input>
                </div>
              <div class="item">
                <p>Route</p>
