@@ -1,5 +1,5 @@
 const initialState = [];
-const productReducer = (state=initialState, action) => {
+const routeReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'ADD_ROUTE':
             return action.payload;
@@ -14,4 +14,4 @@ const productReducer = (state=initialState, action) => {
     }
 }
 
-export default productReducer;
+export default routeReducer;
