@@ -1,11 +1,7 @@
 html, body {
     min-height: 100%;
     }
-<<<<<<< HEAD
-    body, div, form, input, p { 
-=======
     body, div, form, input, select, p { 
->>>>>>> e2258c2189433815bd9282b09d61e1c77bc5281a
     padding: 0;
     margin: 0;
     outline: none;
@@ -53,11 +49,7 @@ html, body {
     width: 100%;
     height: 100%;
     }
-<<<<<<< HEAD
-    input {
-=======
     input, select {
->>>>>>> e2258c2189433815bd9282b09d61e1c77bc5281a
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -66,13 +58,6 @@ html, body {
     width: calc(100% - 10px);
     padding: 5px;
     }
-<<<<<<< HEAD
-    
-    .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
-    color: #a37547;
-    }
-    .item input:hover {
-=======
     select {
     width: 100%;
     padding: 7px 0;
@@ -82,7 +67,6 @@ html, body {
     color: #a37547;
     }
     .item input:hover, .item select:hover {
->>>>>>> e2258c2189433815bd9282b09d61e1c77bc5281a
     border: 1px solid transparent;
     box-shadow: 0 0 6px 0 #a37547;
     color: #a37547;
@@ -94,6 +78,12 @@ html, body {
     .btn-block {
     margin-top: 10px;
     text-align: center;
+    }
+    #edit{
+        margin-right: 10px;
+    }
+    #cancel{
+        margin-left: 10px;
     }
     button {
     width: 150px;
@@ -117,8 +107,4 @@ html, body {
     .name-item input {
     width: calc(50% - 20px);
     }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> e2258c2189433815bd9282b09d61e1c77bc5281a
+  }
