@@ -3,7 +3,7 @@ import axios from 'axios';
 const AddRouteAction = (routeObj) => {
     return async function(dispatch) {
         const res = await axios.post(
-            "http://localhost:9090/cgata/route",
+            "http://localhost:9090/cgata/route/add",
                 { 
                     source: routeObj.source,
                     destination: routeObj.destination,
