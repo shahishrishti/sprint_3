@@ -1,6 +1,36 @@
 import React from 'react';
 import '../css/add_vehicle.css'
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import addVehicleAction from '../actions/add_vehicle_action'
+import GetRouteAction from '../actions/view_all_route_action';
+
+
+let dispatch;
+let history;
+let selectedRouteId;
 export const AddVehicleComponent = (props) =>{
+
+
+   dispatch = useDispatch();
+   history = useHistory();
+   let routeList = useSelector(state => state.routeReducer.route);
+
+   React.useEffect(() =>{
+       RouteList()
+   } , []);
+
+   const RouteList = () =>{
+       console.log("hello");
+       dispatch(GetRouteAction());
+   }
+
+   console.log("Route : ",routeList);
+   if(!Array.isArray(routeList)) {
+       routeList = [];
+       console.log("Set routeList to blank array");
+   }
     return (
      <body>
         <div class="testbox">
@@ -29,14 +59,10 @@ export const AddVehicleComponent = (props) =>{
                </div>
              <div class="item">
                <p>Route</p>
-                 <select required>
-                    <option value="1">Mumbai-Pune</option>
-                    <option value="2">Pune-Mumbai</option>
-                    <option value="3">Nashik-Nagpur</option>
-                    <option value="4">Nagpur-Nashik</option>
-                    <option value="5">Mumbai-Surat</option>
-                    <option value="6">Surat-Mumbai</option>
-                 </select>
+               
+                    <select id="route" onChange={handleChangeRoute} required>
+                        {renderRoute(routeList)}
+                    </select>
              </div>
      
         <div class="btn-block">
@@ -47,5 +73,21 @@ export const AddVehicleComponent = (props) =>{
      </body>
   
   );
+
+  function handleChangeRoute(event){
+   selectedRouteId =event.target.value;
+   console.log("selected Route : ",selectedRouteId);
+}
+
+function renderRoute(routeList){
+   console.log("routeList: ",routeList);
+   return routeList.map((route,index) =>{
+       const {routeId,source,destination}=route
+       return(
+           <option key={routeId} value={routeId}>{source}-{destination}</option>
+       )
+   })
+};
+
 
 }
