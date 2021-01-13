@@ -4,6 +4,7 @@ import { AddRouteComponent } from './components/add_route'
 import { AddVehicleComponent } from './components/add_vehicle'
 import { ViewRouteComponent } from './components/view_route'
 import { HomePageComponent } from './components/home_page'
+import { CancelBookingComponent} from './components/cancel_booking'
 function App() {
   return (
     <Router>
@@ -21,6 +22,9 @@ function App() {
           <li>
             <Link to="/addvehicle">Add Vehicle</Link>
           </li>
+          <li>
+            <Link to="/cancelbooking">Cancel Booking</Link>
+          </li>
         </ul>
 
         <hr />
@@ -37,6 +41,9 @@ function App() {
           </Route>
           <Route path="/addvehicle">
             <AddVehicleComponent/>
+          </Route>
+          <Route path="/cancelbooking">
+            <CancelBookingComponent/>
           </Route>
         </Switch> 
         </div>       
