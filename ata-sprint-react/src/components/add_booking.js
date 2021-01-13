@@ -4,7 +4,7 @@ import {addBooking} from '../css/add_booking.css';
 export const AddBookingComponent = (props) =>{
     return(
         <div class="testbox">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div class="banner">
                     <h1>Add Booking</h1>
                 </div>
@@ -45,13 +45,5 @@ export const AddBookingComponent = (props) =>{
     </div>
     );
 
-    function handleSubmit(event){
-        event.preventDefault();
-        const data = new FormData(event.target);
-        const name = data.get('name');
-        if(name==='' || name===null) {
-            alert("Name cannot be blank");
-            return;
-        }
-    }
+    
 }
