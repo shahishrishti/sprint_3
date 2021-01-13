@@ -1,11 +1,44 @@
-const initialState = [];
+const driverReducer = (state={products: []}, action) => {
+    switch(action.type) {
+       
+        case 'DELETE_DRIVER':
+            state.driver = action.payload;
+            return state;
+        case 'UPDATE_DRIVER':
+            return state;
+        default:
+            return state;
+
+    }
+}
+
+
+
+export default driverReducer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  const initialState = [];
 const driverReducer = (state=initialState, action) =>{
     switch(action.type){
         case 'ADD_DRIVER':
             return action.payload;
         case 'VIEW_DRIVER':
             return action.payload;
-        case 'EDIT_DRIVER':
+        case 'UPDATE_DRIVER':
             return action.payload;
         case 'DELETE_DRIVER':
             return action.payload;
@@ -15,4 +48,4 @@ const driverReducer = (state=initialState, action) =>{
     }
 }
 
-export default driverReducer;
+export default driverReducer;    */
