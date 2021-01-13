@@ -13,7 +13,7 @@ export const AddBookingComponent = (props) =>{
 
     dispatch = useDispatch();
     history = useHistory();
-    let routeList = useSelector(state => state);
+    let routeList = useSelector(state => state.routeReducer.route);
 
     React.useEffect(() =>{
         RouteList()
@@ -78,7 +78,7 @@ export const AddBookingComponent = (props) =>{
     function renderRoute(routeList){
         console.log("routeList: ",routeList);
         return routeList.map((route,index) =>{
-            const {routeId,source,destination,distance}=route
+            const {routeId,source,destination}=route
             return(
                 <option key={routeId} value={routeId}>{source}-{destination}</option>
             )
