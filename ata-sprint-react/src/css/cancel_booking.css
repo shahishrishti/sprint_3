@@ -1,7 +1,7 @@
 html, body {
     min-height: 100%;
     }
-    body, div, form, input, select, p { 
+    body, div, form, input, p { 
     padding: 0;
     margin: 0;
     outline: none;
@@ -49,7 +49,7 @@ html, body {
     width: 100%;
     height: 100%;
     }
-    input, select {
+    input {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -58,15 +58,11 @@ html, body {
     width: calc(100% - 10px);
     padding: 5px;
     }
-    select {
-    width: 100%;
-    padding: 7px 0;
-    background: transparent;
-    }
+    
     .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
     color: #a37547;
     }
-    .item input:hover, .item select:hover {
+    .item input:hover {
     border: 1px solid transparent;
     box-shadow: 0 0 6px 0 #a37547;
     color: #a37547;

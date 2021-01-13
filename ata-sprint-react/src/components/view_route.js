@@ -1,5 +1,28 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import '../css/view_route.css'
+import GetRouteAction from '../actions/view_all_route_action';
+
+let dispatch;
 export const ViewRouteComponent = (props) => {
+
+    let routeList = useSelector(state => state.route.routeReducer);
+    dispatch = useDispatch();
+
+    React.useEffect(() => {
+        RouteList()
+    }, []);
+
+    const RouteList = () => {
+        dispatch(GetRouteAction());
+    }
+
+    console.log("RouteList: ", routeList);
+    if(!Array.isArray(routeList)) {
+        routeList = [];
+        console.log("Set routeList to blank array");
+    }
+
     return (
         <div class="testbox">
             <form action="/">
@@ -41,7 +64,9 @@ export const ViewRouteComponent = (props) => {
                             </tr>
                         </thead>
                         <tbody>
+                            {renderTableData(routeList)}
                             <tr>
+                                
                                 <th scope="row">1</th>
                                 <td>Mumbai</td>
                                 <td>Pune</td>
@@ -61,4 +86,8 @@ export const ViewRouteComponent = (props) => {
             </form>
         </div>
     );
+}
+
+function renderTableData(routeList) {
+    console.log("routeList: ", routeList);
 }
