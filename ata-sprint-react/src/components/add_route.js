@@ -1,19 +1,15 @@
 import React from 'react';
 import '../css/add_route.css'
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
 import GetPlaceNameAction from "../actions/place_action";
 
 let dispatch;
-let history;
 let selectedSource, selectedDestination;
 
 export const AddRouteComponent = (props) => {
-    let [place, setPlace] = useState(0);
-     dispatch = useDispatch();
-    // history = useHistory();
-    let placeList = useSelector(state => state.place);
+  
+    dispatch = useDispatch();
+    let placeList = useSelector(state => state.place.placeReducer);
 
    
     React.useEffect(() => {
@@ -22,12 +18,9 @@ export const AddRouteComponent = (props) => {
 
     const PlaceList = () => {
         console.log("HEllo");
-       // let productsFunc = props.store.dispatch(GetPlaceNameAction());
-      //  productsFunc.then((response)=>console.log(response));
-        
-         dispatch(GetPlaceNameAction());
+        dispatch(GetPlaceNameAction());
     }
-    console.log("Places: ", place);
+    console.log("Places: ", placeList);
     if(!Array.isArray(placeList)) {
         placeList = [];
         console.log("Set placeList to blank array");
