@@ -1,16 +1,20 @@
-const initialState = [];
-const routeReducer = (state=initialState, action) => {
+const routeReducer = (state={route: []}, action) => {
     switch(action.type) {
         case 'ADD_ROUTE':
-            return action.payload;
+            state.route.push(action.payload);
+            return state;
         case 'VIEW_ROUTE':
-            return action.payload;
+            console.log("Action: ", action.payload);
+            state.route = action.payload;
+            return state;
         case 'DELETE_ROUTE':
-            return action.payload;
-        case 'EDIT_ROUTE':
-            return action.payload;
+            state.route = action.payload;
+            return state;
+        case 'UPDATE_ROUTE':
+            return state;
         default:
-            return [];
+            return state;
+
     }
 }
 

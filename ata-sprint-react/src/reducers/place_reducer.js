@@ -1,6 +1,7 @@
-const PlaceReducer = (state={place: []}, action) => {
+const placeReducer = (state={place: []}, action) => {
     switch(action.type) {
         case 'GET_PLACENAME':
+            console.log("ACtion: ", action.payload);
             state.place = action.payload;
             return state;
         default:
@@ -9,4 +10,4 @@ const PlaceReducer = (state={place: []}, action) => {
     }
 }
 
-export default PlaceReducer;
+export default placeReducer; 

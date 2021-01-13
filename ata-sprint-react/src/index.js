@@ -7,12 +7,13 @@ import routeReducer from './reducers/route_reducer';
 import vehicleReducer from './reducers/vehicle_reducer';
 import driverReducer from './reducers/driver_reducer';
 import bookingReducer from './reducers/booking_reducer';
+import placeReducer from './reducers/place_reducer';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
-let allReducers = combineReducers({'routeReducer':routeReducer, 'vehicleReducer':vehicleReducer, 'driverReducer':driverReducer, 'bookingReducer':bookingReducer});
+let allReducers = combineReducers({'vehicleReducer':vehicleReducer,'routeReducer':routeReducer,  'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer});
 let store = createStore(allReducers,
   compose(applyMiddleware(ReduxThunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
@@ -23,7 +24,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+          <App store={store}/>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
