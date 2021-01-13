@@ -9,7 +9,7 @@ let selectedSource, selectedDestination;
 export const AddRouteComponent = (props) => {
   
     dispatch = useDispatch();
-    let placeList = useSelector(state => state.place.placeReducer);
+    let placeList = useSelector(state => state.placeReducer.place);
 
    
     React.useEffect(() => {

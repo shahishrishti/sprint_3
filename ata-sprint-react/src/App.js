@@ -43,7 +43,7 @@ function App(props) {
               <HomePageComponent />
             </Route>
             <Route path="/viewroute">
-              <ViewRouteComponent/>
+              <ViewRouteComponent store={props.store}/>
             </Route>
             <Route path="/addroute">
               <AddRouteComponent store={props.store}/>

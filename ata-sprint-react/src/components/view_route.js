@@ -4,16 +4,18 @@ import '../css/view_route.css'
 import GetRouteAction from '../actions/view_all_route_action';
 
 let dispatch;
+let count = 0;
 export const ViewRouteComponent = (props) => {
 
-    let routeList = useSelector(state => state.route.routeReducer);
     dispatch = useDispatch();
+    let routeList = useSelector(state => state.routeReducer.route);
 
     React.useEffect(() => {
         RouteList()
     }, []);
 
     const RouteList = () => {
+        console.log("Use effect");
         dispatch(GetRouteAction());
     }
 
@@ -56,7 +58,6 @@ export const ViewRouteComponent = (props) => {
                     <table class="content-table">
                         <thead>
                             <tr>
-                                <th scope="col">SrNo.</th>
                                 <th scope="col">Source</th>
                                 <th scope="col">Destination</th>
                                 <th scope="col">Distance</th>
@@ -65,21 +66,6 @@ export const ViewRouteComponent = (props) => {
                         </thead>
                         <tbody>
                             {renderTableData(routeList)}
-                            <tr>
-                                
-                                <th scope="row">1</th>
-                                <td>Mumbai</td>
-                                <td>Pune</td>
-                                <td>300</td>
-                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Banglore</td>
-                                <td>Hyderabad</td>
-                                <td>450</td>
-                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -90,4 +76,15 @@ export const ViewRouteComponent = (props) => {
 
 function renderTableData(routeList) {
     console.log("routeList: ", routeList);
+    return routeList.map((route) => {
+        const { routeid, source, destination, distance } = route;
+        return (
+            <tr key={routeid}>
+                <td>{source}</td>
+                <td>{destination}</td>
+                <td>{distance}</td>
+                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+            </tr>
+        )
+    });
 }
