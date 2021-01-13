@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+import axios from 'axios';
 
 let addBookingAction = (booking) =>{
     return async function (dispatch) {
@@ -22,3 +22,5 @@ let addBookingAction = (booking) =>{
         dispatch({type: "ADD_BOOKING", payload: res.data});
     }
 }
+
+export default addBookingAction;
