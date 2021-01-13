@@ -15,8 +15,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 let allReducers = combineReducers({'vehicleReducer':vehicleReducer,'routeReducer':routeReducer,  'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer});
 let store = createStore(allReducers,
-  compose(applyMiddleware(ReduxThunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+  applyMiddleware(ReduxThunk));
+ // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 store.subscribe(()=>console.log('Current State: ', store.getState()));
 
