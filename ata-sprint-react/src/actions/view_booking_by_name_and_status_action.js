@@ -1,8 +1,17 @@
-const viewBookingByNameAndStatusAction = (booking)=> {
-    return {
-      type: 'VIEW_BOOKING_BY_NAME_AND_STATUS',
-      payload: booking
-    }
-  }
+import axios from 'axios';
 
-  export default viewBookingByNameAndStatusAction;
+let ViewBookingByNameAndStatusAction = (name,bookingStatus) => {
+    return async function(dispatch) {
+        const res = await axios.get(
+            "http://localhost:9090/cgata/booking/" + name +"/"+ bookingStatus , { 
+                headers: { 
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+          console.log('View Booking serverResponse: ', res.data);
+          dispatch({type: "VIEW_BOOKING_BY_NAME_AND_STATUS", payload: res.data});
+
+    }
+}
+
+export default ViewBookingByNameAndStatusAction;
