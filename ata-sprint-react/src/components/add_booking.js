@@ -4,12 +4,34 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import addBookingAction from '../actions/add_booking_action'
-
+import GetRouteAction from '../actions/view_all_route_action';
 let dispatch;
 let history;
 let selectedRouteId;
 
 export const AddBookingComponent = (props) =>{
+
+    dispatch = useDispatch();
+    history = useHistory();
+    let routeList = useSelector(state => state);
+
+    React.useEffect(() =>{
+        RouteList()
+    } , []);
+
+    const RouteList = () =>{
+        console.log("hello");
+        dispatch(GetRouteAction());
+    }
+
+    console.log("Route : ",routeList);
+    if(!Array.isArray(routeList)) {
+        routeList = [];
+        console.log("Set routeList to blank array");
+    }
+    
+
+
     return(
         <div class="testbox">
             <form>
