@@ -10,6 +10,7 @@ import bookingReducer from './reducers/booking_reducer';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom';
 
 let allReducers = combineReducers({'routeReducer':routeReducer, 'vehicleReducer':vehicleReducer, 'driverReducer':driverReducer, 'bookingReducer':bookingReducer});
 let store = createStore(allReducers,
@@ -21,7 +22,9 @@ store.subscribe(()=>console.log('Current State: ', store.getState()));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
