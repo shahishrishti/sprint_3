@@ -2,6 +2,7 @@ const initialState = [];
 const vehicleReducer = (state=initialState, action) =>{
     switch(action.type){
         case 'ADD_VEHICLE':
+            state.vehicle.push(action.payload);
             return action.payload;
         case 'VIEW_VEHICLE':
             return action.payload;
