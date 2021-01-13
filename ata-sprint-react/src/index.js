@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
-let allReducers = combineReducers({'routeReducer':routeReducer, 'vehicleReducer':vehicleReducer, 'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer});
+let allReducers = combineReducers({'vehicleReducer':vehicleReducer,'routeReducer':routeReducer,  'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer});
 let store = createStore(allReducers,
   compose(applyMiddleware(ReduxThunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
