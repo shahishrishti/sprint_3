@@ -16,7 +16,7 @@ import { ModifyVehicleComponent } from './components/modify_vehicle';
 import { ViewDriverComponent } from './components/view_driver';
 import { ViewBookingComponent } from "./components/view_booking";
 
-function App() {
+function App(props) {
   return (
       <Router>
       <div className="App">
@@ -46,7 +46,7 @@ function App() {
               <ViewRouteComponent/>
             </Route>
             <Route path="/addroute">
-              <AddRouteComponent/>
+              <AddRouteComponent store={props.store}/>
             </Route>
             <Route path="/viewvehicle">
               <ViewVehicleComponent/>
