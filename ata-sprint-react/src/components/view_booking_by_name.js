@@ -1,16 +1,44 @@
 import React from 'react';
 import '../css/add_booking.css'
+import { useSelector, useDispatch } from 'react-redux'
+import ViewBookingByNameAction from '../actions/view_booking_by_name_action';
+import {useRef} from 'react'
 
+let dispatch;
 export const ViewBookingByNameComponent = (props) =>{
+
+    let bookingList = useSelector(state => state.bookingReducer);
+    dispatch = useDispatch();
+
+    /*React.useEffect(() => {
+        BookingList();
+    }, []);
+
+    const BookingList = () => {
+        dispatch(ViewBookingByNameAction());
+    }
+    */
+    console.log("BookingList: ", bookingList);
+    
+    if(!Array.isArray(bookingList)){
+        bookingList = [];
+        console.log("Set bookingList to blank array");
+    }
+    
+    const userNameRef = useRef(null);
+    const viewBooking = (event) => { 
+           // props.viewBooking(new Booking(userNameRef.current.value));
+        }
+        
     return (
         <div class="testbox">
-            <form >
+            <form onSubmit={handleSubmit}>
                 <div class="banner">
                     <h1>View Booking By Username</h1>
                 </div>
                 <div class="item">
                     <p>Passenger User name</p>
-                    <input type="text" name="name" placeholder="Enter your name" />
+                    <input type="text" name="name" id="name" placeholder="Enter your name" />
                 </div>
 
                 <div class="btn-block">
@@ -20,47 +48,48 @@ export const ViewBookingByNameComponent = (props) =>{
                 <table class="content-table">
                     <thead>
                         <tr>
-                        <th scope="col">SrNo.</th>
-                        <th scope="col">Name</th>
                         <th scope="col">Journey Date</th>
                         <th scope="col">Booking Date</th>
                         <th scope="col">Route</th>
-                        <th scope="col">Vehicle No</th>
+                        <th scope="col">Vehicle Type</th>
                         <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>26/01/2021</td>
-                        <td>25/01/2021</td>
-                        <td>Mumbai-Pune</td>
-                        <td>MH-43-A-1234</td>
-                        <td>Confirm</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Tom</td>
-                        <td>27/01/2021</td>
-                        <td>26/01/2021</td>
-                        <td>Mumbai-Surat</td>
-                        <td>MH-43-B-5678</td>
-                        <td>Pending</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Pat</td>
-                        <td>28/01/2021</td>
-                        <td>27/01/2021</td>
-                        <td>Nashik-Nagpur</td>
-                        <td>MH-43-C-2357</td>
-                        <td>Confirm</td>
-                        </tr>
+                        {renderTableData(bookingList)}
                     </tbody>
                 </table>
             </form>
         </div>
 
     );
+}
+
+function renderTableData(bookingList) {
+    console.log("bookingList: ", bookingList);
+    return bookingList.map((booking) => {
+        const routeid = booking.route.routeid;
+        const { bookingid, journeydate, bookingdate, vehicletype, bookingstatus } = booking;
+        return (
+            <tr key={bookingid}>
+                <td>{journeydate}</td>
+                <td>{bookingdate}</td>
+                <td>{routeid}</td>
+                <td>{vehicletype}</td>
+                <td>{bookingstatus}</td>
+            </tr>
+        )
+    });
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target)
+    const name = data.get('name');
+    console.log(name);
+    if(name===''){
+        alert("Name cannot be blank");
+        return;
+    }
+    dispatch(ViewBookingByNameAction(name));
 }
