@@ -48,7 +48,7 @@ export const ViewVehicleComponent = (props) => {
                    <table class="content-table">
                     <thead>
                         <tr>
-                        <th scope="col">SrNo.</th>
+                        
                         <th scope="col">Vehicle No.</th>
                         <th scope="col">Vehicle Name</th>
                         <th scope="col">Vehicle Type</th>
@@ -74,12 +74,17 @@ export const ViewVehicleComponent = (props) => {
 function renderTableData(vehicleList) {
     console.log("vehicleList: ", vehicleList);
     return vehicleList.map((vehicle, index) => {
-     //   const deptName = employee.department.name;
-       const { vehicleNo, vehicleName, fare } = vehicle //destructuring
+     // const typeName = vehicle.vehicleType.typeName;
+     // const routeId = vehicle.route.routeId;
+       const { vehicleNo, vehicleName, typeName, seatingCapacity, fare ,route} = vehicle //destructuring
        return (
           <tr key={vehicleNo}>
              <td>{vehicleNo}</td>
+             <td>{vehicleName}</td>
+             <td>{typeName}</td>
+             <td>{seatingCapacity}</td>
              <td>{fare}</td>
+             <td>{route}</td>
             
              
           </tr>
