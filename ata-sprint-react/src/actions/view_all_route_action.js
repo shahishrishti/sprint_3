@@ -4,7 +4,7 @@ let GetRouteAction = () => {
     console.log("ACTION");
     return async function (dispatch) {
         const res = await axios.get(
-            "http://localhost:9090/cgata/route"
+            "http://localhost:8080/cgata/route"
           );
           dispatch({type: "VIEW_ROUTE", payload: res.data});
     }

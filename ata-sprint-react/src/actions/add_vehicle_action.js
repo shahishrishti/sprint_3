@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-let addVehicleAction = (vehicle) =>{
+let addVehicleAction = (vehicleObj) =>{
     return async function (dispatch) {
         const res = await axios.post(
             "http://localhost:8080/cgata/vehicle/add", 
                 { 
-                    vehicleNo: vehicle.vehicleNo, 
-                    vehicleName : vehicle.vehicleName, 
-                    vehicleType : vehicle.vehicleType,
-                    fare : vehicle.fare,
-                    route : {"routeId": vehicle.route.routeId},
+                    vehicleNo: vehicleObj.vehicleNo, 
+                    vehicleName : vehicleObj.vehicleName, 
+                    vehicleType : {"typeId": vehicleObj.typeId.typeId},
+                    fare : vehicleObj.fare,
+                    route : {"routeId": vehicleObj.routeId.routeId}
                     
                     
                 }, 

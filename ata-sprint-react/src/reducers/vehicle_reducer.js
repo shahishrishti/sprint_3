@@ -11,7 +11,7 @@ const vehicleReducer = (state=initialState, action) =>{
         case 'EDIT_VEHICLE':
             return action.payload;
         default:
-            return [];
+            return state;
     }
 }
 
