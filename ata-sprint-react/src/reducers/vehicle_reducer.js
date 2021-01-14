@@ -1,5 +1,5 @@
-const initialState = [];
-const vehicleReducer = (state=initialState, action) =>{
+
+const vehicleReducer = (state={vehicle: []}, action) =>{
     switch(action.type){
         case 'ADD_VEHICLE':
             state.vehicle.push(action.payload);

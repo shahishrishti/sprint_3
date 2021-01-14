@@ -1,17 +1,16 @@
 import axios from 'axios';
 
 let addVehicleAction = (vehicleObj) =>{
+    console.log("vehicle obj from action: ", vehicleObj);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:8080/cgata/vehicle/add", 
+            "http://localhost:9090/cgata/vehicle/add", 
                 { 
                     vehicleNo: vehicleObj.vehicleNo, 
                     vehicleName : vehicleObj.vehicleName, 
-                    vehicleType : {"typeId": vehicleObj.typeId.typeId},
+                    vehicleType : {"typeId": vehicleObj.vehicleType.typeId},
                     fare : vehicleObj.fare,
-                    route : {"routeId": vehicleObj.routeId.routeId}
-                    
-                    
+                    route : {"routeid": vehicleObj.route.routeid}   
                 }, 
                 { 
                     "Content-type": "application/json; charset=UTF-8"
