@@ -1,7 +1,37 @@
 import React from 'react';
 import {addBooking} from '../css/add_booking.css';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import addBookingAction from '../actions/add_booking_action'
+import GetRouteAction from '../actions/view_all_route_action';
+let dispatch;
+let history;
+let selectedRouteId;
 
 export const AddBookingComponent = (props) =>{
+
+    dispatch = useDispatch();
+    history = useHistory();
+    let routeList = useSelector(state => state.routeReducer.route);
+
+    React.useEffect(() =>{
+        RouteList()
+    } , []);
+
+    const RouteList = () =>{
+        console.log("hello");
+        dispatch(GetRouteAction());
+    }
+
+    console.log("Route : ",routeList);
+    if(!Array.isArray(routeList)) {
+        routeList = [];
+        console.log("Set routeList to blank array");
+    }
+    
+
+
     return(
         <div class="testbox">
             <form>
@@ -22,13 +52,8 @@ export const AddBookingComponent = (props) =>{
                 </div>
                 <div class="item">
                     <p>Route</p>
-                    <select required>
-                    <option value="1">Mumbai-Pune</option>
-                    <option value="2">Pune-Mumbai</option>
-                    <option value="3">Nashik-Nagpur</option>
-                    <option value="4">Nagpur-Nashik</option>
-                    <option value="5">Mumbai-Surat</option>
-                    <option value="6">Surat-Mumbai</option>
+                    <select id="route" onChange={handleChangeRoute} required>
+                        {renderRoute(routeList)}
                     </select>
                 </div>
                 <div class="item">
@@ -45,5 +70,19 @@ export const AddBookingComponent = (props) =>{
     </div>
     );
 
+    function handleChangeRoute(event){
+        selectedRouteId =event.target.value;
+        console.log("selected Route : ",selectedRouteId);
+    }
+
+    function renderRoute(routeList){
+        console.log("routeList: ",routeList);
+        return routeList.map((route,index) =>{
+            const {routeId,source,destination}=route
+            return(
+                <option key={routeId} value={routeId}>{source}-{destination}</option>
+            )
+        })
+    };
     
 }

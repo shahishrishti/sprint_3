@@ -1,42 +1,86 @@
 import React from 'react';
 import '../css/add_vehicle.css'
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import addVehicleAction from '../actions/add_vehicle_action'
+import GetRouteAction from '../actions/view_all_route_action';
+import GetVehicleTypeAction from '../actions/vehicleType_action';
+import Vehicle from '../models/vehicle';
+
+
+let dispatch;
+let history;
+let selectedRouteId;
+let selectedtypeId;
 export const AddVehicleComponent = (props) =>{
+
+
+   dispatch = useDispatch();
+   history = useHistory();
+   let routeList = useSelector(state => state.routeReducer.route);
+   let vehicletypeList = useSelector(state => state.vehicletypeReducer.vehicletype);
+
+   React.useEffect(() =>{
+       RouteList()
+   } , []);
+
+   const RouteList = () =>{
+       console.log("hello");
+       dispatch(GetRouteAction());
+   }
+
+   React.useEffect(() =>{
+      VehicleTypeList()
+  } , []);
+
+   const VehicleTypeList = () =>{
+      console.log("hello");
+      dispatch(GetVehicleTypeAction());
+  }
+
+   console.log("Route : ",routeList);
+   if(!Array.isArray(routeList)) {
+       routeList = [];
+       console.log("Set routeList to blank array");
+   }
+
+   console.log("Vehicle : ",vehicletypeList);
+   if(!Array.isArray(vehicletypeList)) {
+       vehicletypeList = [];
+       console.log("Set vehicletypeList to blank array");
+   }
     return (
      <body>
         <div class="testbox">
-            <form action="/">
+            <form onSubmit={handleSubmit}>
               <div class="banner">
                  <h1>Add Vehicle</h1>
               </div>
               <div class="item">
                   <p>Vehicle No.</p>
-                  <input type="text" name="vehicle_no" placeholder="Enter vehicle No." />
+                  <input type="text" name="vehicleNo" placeholder="Enter vehicle No." />
                </div>
               <div class="item">
                  <p>Vehicle name</p>
-                  <input type="text" name="name" placeholder="Enter vehicle name" />
+                  <input type="text" name="vehicleName" placeholder="Enter vehicle name" />
               </div>
               <div class="item">
                <p>Vehicle Type</p>
-                 <select required>
-                    <option value="1">Car</option>
-                    <option value="2">Bus</option>
-                 </select>
+               <select id="vehicletype" onChange={handleChangeVehicleType} required>
+                        {renderVehicleType(vehicletypeList)}
+                    </select>
              </div>
                <div class="item">
                   <p>Fare</p>
-                  <input type="number" name="fare_per_km" placeholder="Enter Fare Per Km" min="20" step="0.5"></input>
+                  <input type="number" name="fare" placeholder="Enter Fare Per Km" min="20" step="0.5"></input>
                </div>
              <div class="item">
                <p>Route</p>
-                 <select required>
-                    <option value="1">Mumbai-Pune</option>
-                    <option value="2">Pune-Mumbai</option>
-                    <option value="3">Nashik-Nagpur</option>
-                    <option value="4">Nagpur-Nashik</option>
-                    <option value="5">Mumbai-Surat</option>
-                    <option value="6">Surat-Mumbai</option>
-                 </select>
+               
+                    <select id="route" onChange={handleChangeRoute} required>
+                        {renderRoute(routeList)}
+                    </select>
              </div>
      
         <div class="btn-block">
@@ -48,4 +92,60 @@ export const AddVehicleComponent = (props) =>{
   
   );
 
+  function handleChangeRoute(event){
+   selectedRouteId =event.target.value;
+   console.log("selected Route : ",selectedRouteId);
+}
+
+function renderRoute(routeList){
+   console.log("routeList: ",routeList);
+   return routeList.map((route) =>{
+       console.log("Route from line 103: ", route)
+       const {routeid,source,destination, distance}=route
+       return(
+           <option key={routeid} value={routeid}>{source}-{destination}</option>
+       )
+   })
+};
+
+
+function handleChangeVehicleType(event){
+   selectedtypeId =event.target.value;
+   console.log("selected VehicleType : ",selectedtypeId);
+}
+
+function renderVehicleType(vehicletypeList){
+   console.log("vehicletypeList: ",vehicletypeList);
+   return vehicletypeList.map((vehicletype) =>{
+       const {typeId,typeName}=vehicletype
+       return(
+           <option key={typeId} value={typeId}>{typeName}</option>
+       )
+   })
+};
+
+
+
+
+}
+function handleSubmit(event) {
+   event.preventDefault();
+   const data = new FormData(event.target)
+   const vehicleNo = data.get('vehicleNo');
+   const vehicleName = data.get('vehicleName');
+   const fare = data.get('fare');
+   console.log(vehicleNo);
+   console.log(vehicleName);
+   console.log(fare);
+   if(vehicleNo===''){
+       alert("Vehicle no. cannot be blank");
+       return;
+   } else if(vehicleName==='') {
+       alert("Vehicle name cannot be blank");
+       return;
+   }
+   console.log("Route: ", selectedRouteId)
+   console.log("VehicleType: ", selectedtypeId)
+   const vehicleObj = new Vehicle(vehicleNo, vehicleName, selectedtypeId, fare, selectedRouteId );
+   dispatch(addVehicleAction(vehicleObj));
 }
