@@ -1,4 +1,4 @@
-const driverReducer = (state={products: []}, action) => {
+const driverReducer = (state={drivers: []}, action) => {
     switch(action.type) {
        
         case 'DELETE_DRIVER':

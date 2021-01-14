@@ -26,7 +26,8 @@ export const ModifyDriverComponent = (props) => {
                           <input type="number" name="contact_no" placeholder="### ### ####" />
                       </div>
                       <div class="btn-block">
-                          <button type="submit" href="/">UPDATE</button>
+                          <button type="submit" href="/" id="edit">UPDATE</button>
+                          <button type="submit" href="/" id="cancel">CANCEL</button>
                       </div>
                   </form>
                   </div>

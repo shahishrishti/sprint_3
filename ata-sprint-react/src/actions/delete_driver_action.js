@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const DeleteDriverAction = (driverId) => {
+let DeleteDriverAction = (driverId) => {
     return async function(dispatch) {
         const res = await axios.delete(
             "http://localhost:9090/cgata/driver/" + driverId, { 
