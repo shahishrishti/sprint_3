@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/view_vehicle.css'
+import GetVehicleAction from '../actions/view_all_vehicle_action';
 export const ViewVehicleComponent = (props) => {
     return(
         <body>
@@ -11,7 +12,7 @@ export const ViewVehicleComponent = (props) => {
                    <div class="item">
                      <p>View vehicle with</p>
                        <select required>
-                          <option value="1">View All vehicles</option>
+                          <option value="1">Select option</option>
                           <option value="2">Vehicle No.</option>
                           <option value="3">Vehicle Name</option>
                           <option value="4">Vehicle Fare per km</option>
