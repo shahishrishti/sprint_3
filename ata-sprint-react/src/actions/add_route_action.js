@@ -9,7 +9,6 @@ const AddRouteAction = (routeObj) => {
                     
                     source: routeObj.source,
                     destination: routeObj.destination,
-
                     distance: routeObj.distance
                 }, 
                 { 

@@ -99,10 +99,11 @@ export const AddVehicleComponent = (props) =>{
 
 function renderRoute(routeList){
    console.log("routeList: ",routeList);
-   return routeList.map((route,index) =>{
-       const {routeId,source,destination}=route
+   return routeList.map((route) =>{
+       console.log("Route from line 103: ", route)
+       const {routeid,source,destination, distance}=route
        return(
-           <option key={routeId} value={routeId}>{source}-{destination}</option>
+           <option key={routeid} value={routeid}>{source}-{destination}</option>
        )
    })
 };
@@ -115,7 +116,7 @@ function handleChangeVehicleType(event){
 
 function renderVehicleType(vehicletypeList){
    console.log("vehicletypeList: ",vehicletypeList);
-   return vehicletypeList.map((vehicletype,index) =>{
+   return vehicletypeList.map((vehicletype) =>{
        const {typeId,typeName}=vehicletype
        return(
            <option key={typeId} value={typeId}>{typeName}</option>
@@ -143,6 +144,8 @@ function handleSubmit(event) {
        alert("Vehicle name cannot be blank");
        return;
    }
+   console.log("Route: ", selectedRouteId)
+   console.log("VehicleType: ", selectedtypeId)
    const vehicleObj = new Vehicle(vehicleNo, vehicleName, selectedtypeId, fare, selectedRouteId );
    dispatch(addVehicleAction(vehicleObj));
 }
