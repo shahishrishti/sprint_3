@@ -7,9 +7,9 @@ let addVehicleAction = (vehicleObj) =>{
                 { 
                     vehicleNo: vehicleObj.vehicleNo, 
                     vehicleName : vehicleObj.vehicleName, 
-                    vehicleType : vehicleObj.vehicleType,
+                    vehicleType : {"typeId": vehicleObj.typeId.typeId},
                     fare : vehicleObj.fare,
-                    route : {"routeId": vehicleObj.route.routeId},
+                    route : {"routeId": vehicleObj.routeId.routeId}
                     
                     
                 }, 
