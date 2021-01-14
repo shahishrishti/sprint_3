@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const UpdateDriverAction = (driverObj) => {
+let UpdateDriverAction = (driverObj) => {
     return async function(dispatch) {
         const res = await axios.put(
             "http://localhost:9090/cgata/driver/" + driverObj.id,

@@ -1,5 +1,30 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import '../css/view_route.css'
+import GetRouteAction from '../actions/view_all_route_action';
+
+let dispatch;
+let count = 0;
 export const ViewRouteComponent = (props) => {
+
+    dispatch = useDispatch();
+    let routeList = useSelector(state => state.routeReducer.route);
+
+    React.useEffect(() => {
+        RouteList()
+    }, []);
+
+    const RouteList = () => {
+        console.log("Use effect");
+        dispatch(GetRouteAction());
+    }
+
+    console.log("RouteList: ", routeList);
+    if(!Array.isArray(routeList)) {
+        routeList = [];
+        console.log("Set routeList to blank array");
+    }
+
     return (
         <div class="testbox">
             <form action="/">
@@ -33,7 +58,6 @@ export const ViewRouteComponent = (props) => {
                     <table class="content-table">
                         <thead>
                             <tr>
-                                <th scope="col">SrNo.</th>
                                 <th scope="col">Source</th>
                                 <th scope="col">Destination</th>
                                 <th scope="col">Distance</th>
@@ -41,24 +65,26 @@ export const ViewRouteComponent = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mumbai</td>
-                                <td>Pune</td>
-                                <td>300</td>
-                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Banglore</td>
-                                <td>Hyderabad</td>
-                                <td>450</td>
-                                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                            </tr>
+                            {renderTableData(routeList)}
                         </tbody>
                     </table>
                 </div>
             </form>
         </div>
     );
+}
+
+function renderTableData(routeList) {
+    console.log("routeList: ", routeList);
+    return routeList.map((route) => {
+        const { routeid, source, destination, distance } = route;
+        return (
+            <tr key={routeid}>
+                <td>{source}</td>
+                <td>{destination}</td>
+                <td>{distance}</td>
+                <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+            </tr>
+        )
+    });
 }

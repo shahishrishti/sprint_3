@@ -1,6 +1,6 @@
-const placeReducer = (state={place: []}, action) => {
+const VehicleTypeReducer = (state={vehicletype: []}, action) => {
     switch(action.type) {
-        case 'GET_PLACENAME':
+        case 'GET_VEHICLETYPE':
             console.log("ACtion: ", action.payload);
             state.place = action.payload;
             return state;
@@ -10,4 +10,4 @@ const placeReducer = (state={place: []}, action) => {
     }
 }
 
-export default placeReducer; 
+export default VehicleTypeReducer; 

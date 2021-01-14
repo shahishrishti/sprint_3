@@ -1,19 +1,18 @@
 import React from 'react';
 import '../css/add_route.css'
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
-import GetPlaceNameAction from "../actions/place_action";
+import GetPlaceNameAction from '../actions/place_action';
+import AddRouteAction from '../actions/add_route_action';
+// import { Route } from 'react-router-dom';
+import Route from '../models/route';
 
 let dispatch;
-let history;
 let selectedSource, selectedDestination;
 
 export const AddRouteComponent = (props) => {
-    let [place, setPlace] = useState(0);
-     dispatch = useDispatch();
-    // history = useHistory();
-    let placeList = useSelector(state => state.place);
+  
+    dispatch = useDispatch();
+    let placeList = useSelector(state => state.placeReducer.place);
 
    
     React.useEffect(() => {
@@ -22,20 +21,17 @@ export const AddRouteComponent = (props) => {
 
     const PlaceList = () => {
         console.log("HEllo");
-       // let productsFunc = props.store.dispatch(GetPlaceNameAction());
-      //  productsFunc.then((response)=>console.log(response));
-        
-         dispatch(GetPlaceNameAction());
+        dispatch(GetPlaceNameAction());
     }
-    console.log("Places: ", place);
+    console.log("Places: ", placeList);
     if(!Array.isArray(placeList)) {
         placeList = [];
         console.log("Set placeList to blank array");
     }
     return (
         <div className="testbox">
-            <form action="/">
-                <div class="banner">
+            <form onSubmit={handleSubmit}>
+                <div className="banner">
                     <h1>Add Route</h1>
                 </div>
                 <div className="item">
@@ -52,10 +48,10 @@ export const AddRouteComponent = (props) => {
                 </div>
                 <div className="item">
                     <p>Distance</p>
-                    <input type="number" name="distance" placeholder="Enter distance" min="20" step="0.5"/>
+                    <input type="number" id="distance" name="distance" placeholder="Enter distance" min="20" step="0.5"/>
                 </div>
                 <div className="btn-block">
-                    <button type="submit" href="/">Book</button>
+                    <button>ADD ROUTE</button>
                 </div>
             </form>
         </div>
@@ -65,12 +61,12 @@ export const AddRouteComponent = (props) => {
 
 function sourceHandleChange(event) {
     selectedSource = event.target.value;
-    console.log("Selected department: " + selectedSource);
+    console.log("Selected source: " + selectedSource);
 }
 
 function destinationHandleChange(event) {
     selectedDestination = event.target.value;
-    console.log("Selected department: " + selectedDestination);
+    console.log("Selected destination: " + selectedDestination);
 }
 
 function renderPlace(placeList) {
@@ -82,3 +78,19 @@ function renderPlace(placeList) {
         )
     })
 } 
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target)
+    const distance = data.get('distance');
+    console.log(distance);
+    if(distance===''){
+        alert("Distance cannot be blank");
+        return;
+    } else if(selectedSource === selectedDestination) {
+        alert("Source and destination cannot be same");
+        return;
+    }
+    const routeObj = new Route(selectedSource, selectedDestination, distance);
+    dispatch(AddRouteAction(routeObj));
+}
