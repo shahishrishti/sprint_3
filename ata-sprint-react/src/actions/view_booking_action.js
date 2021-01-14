@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let ViewBookingAction = () => {
+export let ViewBookingAction = () => {
     return async function (dispatch) {
         const res = await axios.get(
             "http://localhost:9090/cgata/booking"
@@ -9,4 +9,4 @@ let ViewBookingAction = () => {
     }
 }
 
-export default ViewBookingAction;
+//export default ViewBookingAction;
