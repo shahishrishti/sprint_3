@@ -3,7 +3,6 @@ import '../css/add_route.css'
 import { useSelector, useDispatch } from 'react-redux';
 import GetPlaceNameAction from '../actions/place_action';
 import AddRouteAction from '../actions/add_route_action';
-// import { Route } from 'react-router-dom';
 import Route from '../models/route';
 
 let dispatch;
@@ -54,6 +53,7 @@ export const AddRouteComponent = (props) => {
                     <button>ADD ROUTE</button>
                 </div>
             </form>
+            <div className="item"></div>
         </div>
     );
 }
@@ -93,4 +93,5 @@ function handleSubmit(event) {
     }
     const routeObj = new Route(selectedSource, selectedDestination, distance);
     dispatch(AddRouteAction(routeObj));
+    
 }

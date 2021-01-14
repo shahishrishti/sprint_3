@@ -7,6 +7,30 @@ const routeReducer = (state={route: []}, action) => {
             console.log("Action: ", action.payload);
             state.route = action.payload;
             return state;
+        case 'VIEW_ROUTE_SOURCE':
+            console.log("Action For Source: ", action.payload);
+            state.route = action.payload;
+            return state;
+        case 'VIEW_ROUTE_DESTINATION':
+            console.log("Action For Distance: ", action.payload);
+            state.route = action.payload;
+            return state;
+        case 'VIEW_ROUTE_SOURCE_DESTINATION':
+            console.log("Action For Source & Distance: ", action.payload);
+            state.route = action.payload;
+            return state;
+        case 'VIEW__ALL_ROUTE_SOURCE_DESTINATION':
+            console.log("Action For All Source & Distance: ", action.payload);
+            state.route = action.payload;
+            return state;
+        case 'VIEW__ALL_ROUTE_SOURCE':
+            console.log("Action For All Source: ", action.payload);
+            state.route = action.payload;
+            return state;
+        case 'VIEW__ALL_ROUTE_DESTINATION':
+            console.log("Action For All Destination: ", action.payload);
+            state.route = action.payload;
+            return state;
         case 'DELETE_ROUTE':
             state.route = action.payload;
             return state;

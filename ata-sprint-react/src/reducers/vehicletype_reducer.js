@@ -1,8 +1,8 @@
-const VehicleTypeReducer = (state={vehicletype: []}, action) => {
+const vehicletypeReducer = (state={vehicletype: []}, action) => {
     switch(action.type) {
         case 'GET_VEHICLETYPE':
             console.log("ACtion: ", action.payload);
-            state.place = action.payload;
+            state.vehicletype = action.payload;
             return state;
         default:
             return state;
@@ -10,4 +10,4 @@ const VehicleTypeReducer = (state={vehicletype: []}, action) => {
     }
 }
 
-export default VehicleTypeReducer; 
+export default vehicletypeReducer; 
