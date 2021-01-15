@@ -1,4 +1,39 @@
+import React from 'react';
+import '../css/view_vehicle.css'
+import { useSelector, useDispatch } from 'react-redux';
+import {useState} from 'react';
+import GetDriverAction from '../actions/view_all_driver';
+import GetVehicleNoAction from '../actions/view_all_vehicleno_action'  
+    
+
+let dispatch;
+let count = 0;
+let selectedOption;
+
 export const ViewDriverComponent = (props) => {
+    //let [filter, setFilter] = useState();
+    //let [driver, setDriver] = useState();
+    dispatch = useDispatch();
+    let driverList = useSelector(state => state.driverReducer.driver);
+   // let filterList = useSelector(state => state.driverReducer.filter);
+
+
+    React.useEffect(() => {
+        DriverList()
+    }, []);
+
+    const DriverList = () => {
+        console.log("Use effect");
+        dispatch(GetDriverAction());
+    }
+
+    console.log("DriverList: ", driverList);
+    if(!Array.isArray(driverList)) {
+        driverList = [];
+       // filterList = [];
+        console.log("Set driverList  and filterList to blank array");
+    }
+
     return (
         <div class="testbox">
             <form action="/">
@@ -7,7 +42,7 @@ export const ViewDriverComponent = (props) => {
                 </div>
                 <div class="item">
                     <p>Search By</p>
-                    <select required>
+                    <select  id ="search" required>
                         <option value="0">Select Option</option>
                         <option value="1">Driver Name</option>
                         <option value="2">Licenseno</option>
@@ -15,19 +50,14 @@ export const ViewDriverComponent = (props) => {
                 </div>
                 <div class="item">
                     <p>Filter</p>
-                    <select required>
-                        <option value="0">Select...</option>
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                        <option value="5"></option>
+                    <select  id =" filter" required>
+                   }
                     </select>
                     </div>
-                
-                <div class="btn-block">
-                    <button type="submit" href="#" >View</button>
-               </div>
+                    <div class="btn-block">
+                    <button>View</button>
+                </div>
+                <div class="item">
                <table class="content-table">
                     <thead>
                         <tr>
@@ -35,38 +65,63 @@ export const ViewDriverComponent = (props) => {
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">Contact No</th>
-                        <th scope="col">License No</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
-                         </tr>
+                  {/*  {renderTableData(driverList)} */}
                     </tbody>
                 </table>
+                </div>
             </form>
         </div>
     );
 }
+
+
+{/*const searchHandleChange = (event) => {
+    selectedOption = event.target.value;
+    console.log("Selected option: " + selectedOption);
+    if(selectedOption === "Select Option") {
+        alert("Please select and option...");
+        return;
+    } else if(selectedOption === "name") {
+        dispatch(GetAllSourceAction())
+        .then((response) => {
+            console.log("REsponse: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    } else if(selectedOption === "Destination") {
+        dispatch(GetAllDestinationAction())
+        .then((response) => {
+            console.log("REsponse: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    } else if(selectedOption === "Source and Destination") {
+        dispatch(GetAllSourceDestinationAction())
+        .then((response) => {
+            console.log("REsponse: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    }
+}
+
+
+function renderTableData(driverList) {
+    console.log("DriverList: ", driverList);
+    return driverList.map((driver, index) => {
+       const { name, licenseno } = driver //destructuring
+       return (
+        <tr key={name}>
+
+             <td>{name}</td>
+             <td>{licenseno}</td>
+            
+             </tr>
+          
+       )
+    })
+ };*/}
