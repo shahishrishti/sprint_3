@@ -51,7 +51,7 @@ export const ViewDriverComponent = (props) => {
                 console.log("filterList: ", filterList);
                 setFilter(filterList);
             });
-        } else if(selectedOption === "LicenseNo") {
+        } else if(selectedOption === "Licenseno") {
             dispatch(GetAllDriverLicenseno())
             .then((response) => {
                 console.log("REsponse: ", response);
@@ -65,16 +65,18 @@ export const ViewDriverComponent = (props) => {
 const handleSubmit = (event) => {
     event.preventDefault();
     if(selectedOption === "Driver Name") {
-        dispatch(GetDriverByNameAction(selectedOption))
+        console.log("Driver name from line 68: ", selectedValue);
+        dispatch(GetDriverByNameAction(selectedValue))
         .then((response) => {
-            console.log("REsponse: ", response);
+            console.log("Driver name REsponse: ", response);
             console.log("routeList: ", driverList);
             setDriver(driverList);
         });
     } else if(selectedOption === "Licenseno") {
-        dispatch(GetDriverByLicensenoAction(selectedOption))
+        console.log("license no from line 76",selectedValue);
+        dispatch(GetDriverByLicensenoAction(selectedValue))
         .then((response) => {
-            console.log("REsponse: ", response);
+            console.log("License No Response: ", response);
             console.log("routeList: ", driverList);
             setDriver(driverList);
         });
@@ -103,7 +105,7 @@ const handleSubmit = (event) => {
                     </div>
 
                     <div class="btn-block">
-                    <button type="submit" href="/">View</button>
+                    <button>View</button>
                 </div>
                 <div class="item">
                <table class="content-table">

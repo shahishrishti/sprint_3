@@ -9,12 +9,13 @@ const driverReducer = (state={driver: [], filter: []}, action) => {
             state.driver = action.payload;
             return state;
         case 'VIEW_DRIVER_BY_NAME':
-            console.log("Action For Source: ", action.payload);
+            console.log("Driver name from reducer: ", action.payload);
             state.driver = action.payload;
             return state;
         case 'VIEW_DRIVER_BY_LICENSENO':
-            console.log("Action For Source: ", action.payload);
-            state.driver = action.payload;
+            console.log("License no from reducer: ", action.payload);
+            state.driver =[action.payload];
+            console.log("Licende no. reducer", action.payload);
             return state;
         case 'VIEW__ALL_DRIVER_Name':
             console.log("Filter driver Name from reducer:",action.payload);
