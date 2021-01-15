@@ -1,14 +1,25 @@
 import React from 'react';
 import '../css/view_vehicle.css'
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import GetVehicleAction from '../actions/view_all_vehicle_action';
+import GetAllVehicleName from '../actions/view_all_vehicleName';
+import GetAllVehicleNo from '../actions/view_all_vehicleNo';
+import GetVehicleByVehicleName from '../actions/view_by_vehicleName';
+import GetVehicleByVehicleNo from '../actions/view_by_vehicleNo';
+import GetVehicleByFare from '../actions/view_by_fare';
 
 let dispatch;
-let count = 0;
+let selectedOption;
+let selectedValue;
+
 export const ViewVehicleComponent = (props) => {
 
+    let [filter, setFilter] = useState();
+    let [vehicle, setVehicle ] = useState();
     dispatch = useDispatch();
     let vehicleList = useSelector(state => state.vehicleReducer.vehicle);
+    let filterList = useSelector(state => state.vehicleReducer.filter);
 
     React.useEffect(() => {
         VehicleList()
@@ -22,33 +33,87 @@ export const ViewVehicleComponent = (props) => {
     console.log("VehicleList: ", vehicleList);
     if(!Array.isArray(vehicleList)) {
         vehicleList = [];
-        console.log("Set vehicleList to blank array");
+        filterList =[];
+        console.log("Set vehicleList and filterList to blank array");
+    }
+
+    const searchHandleChange = (event) => {
+        selectedOption = event.target.value;
+        console.log("Selected option: " + selectedOption);
+        if(selectedOption === "Select Option") {
+            alert("Please select and option...");
+            return;
+        }
+        else if(selectedOption === "Vehicle Name") {
+            dispatch(GetAllVehicleName())
+            .then((response) => {
+                console.log("REsponse: ", response);
+                console.log("filterList: ", filterList);
+                setFilter(filterList);
+            });
+        }
+        else if(selectedOption === "Vehicle No") {
+            dispatch(GetAllVehicleNo())
+            .then((response) => {
+                console.log("REsponse: ", response);
+                console.log("filterList: ", filterList);
+                setFilter(filterList);
+            });
+        }
+    }
+
+ const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Handle Submit called from line 67");
+        if(selectedOption === "Vehicle Name") {
+            dispatch(GetVehicleByVehicleName(selectedValue))
+            .then((response) => {
+                console.log("Response: ", response);
+                console.log("vehicleList: ", vehicleList);
+                setVehicle(vehicleList);
+            });
+        }
+        if(selectedOption === "Vehicle No") {
+            dispatch(GetVehicleByVehicleNo(selectedValue))
+            .then((response) => {
+                console.log("Response: ", response);
+                console.log("vehicleList: ", vehicleList);
+                setVehicle(vehicleList);
+            });
+        }
+       
     }
 
 
     return(
         <body>
-             <div class="testbox">
-                <form action="/">
+             <div class="testbox" >
+                <form onSubmit={handleSubmit}>
                    <div class="banner">
                       <h1>View Vehicle</h1>
                    </div>
                    <div class="item">
                      <p>View vehicle with</p>
-                       <select required>
-                          <option value="1">Select option</option>
-                          <option value="2">Vehicle No.</option>
-                          <option value="3">Vehicle Name</option>
-                          <option value="4">Fare</option>
+                       <select id="search" onChange={searchHandleChange}  required>
+                          <option>Select option</option>
+                          <option>Vehicle No</option>
+                          <option>Vehicle Name</option>
+                         
                        </select>
                    </div>
+                   <div class="item">
+                    <p>Filter</p>
+                    <select id="filter" onChange={filterHandleChange} required>
+                    {renderFilterList(filterList)}     
+                    </select>
+                </div>
                    <div class="btn-block">
-                      <button type="submit" href="/">View</button>
+                      <button>View</button>
                    </div>
                    <table class="content-table">
                     <thead>
                         <tr>
-                        <th scope="col">SrNo.</th>
+                        
                         <th scope="col">Vehicle No.</th>
                         <th scope="col">Vehicle Name</th>
                         <th scope="col">Vehicle Type</th>
@@ -73,16 +138,36 @@ export const ViewVehicleComponent = (props) => {
 
 function renderTableData(vehicleList) {
     console.log("vehicleList: ", vehicleList);
-    return vehicleList.map((vehicle, index) => {
-     //   const deptName = employee.department.name;
-       const { vehicleNo, vehicleName, fare } = vehicle //destructuring
+    return vehicleList.map((vehicle,index) => {
+     const typeName = vehicle.vehicleType.typeName;
+     const route = vehicle.route.source + "-" + vehicle.route.destination;
+     const seatingCapacity = vehicle.vehicleType.seatingCapacity;
+       const { vehicleNo, vehicleName,fare} = vehicle //destructuring
        return (
           <tr key={vehicleNo}>
              <td>{vehicleNo}</td>
+             <td>{vehicleName}</td>
+             <td>{typeName}</td>
+             <td>{seatingCapacity}</td>
              <td>{fare}</td>
-            
-             
+             <td>{route}</td>
+             <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
           </tr>
        )
     })
  };
+
+ function filterHandleChange(event) {
+    selectedValue = event.target.value
+    console.log("Selected Vehicle: " + selectedValue);
+}
+
+
+ function renderFilterList(filterList) {
+    console.log("filterList", filterList);
+    return filterList.map((vehicle) => {
+        return (
+            <option value = {vehicle}>{vehicle}</option>
+        )
+    })
+} 
