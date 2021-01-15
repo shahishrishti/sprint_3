@@ -9,6 +9,8 @@ import GetAllSourceDestinationAction from '../actions/view_all_source_destinatio
 import GetRouteBySourceAction from '../actions/view_by_source';
 import GetRouteByDestinationAction from '../actions/view_by_destination';
 import GetRouteBySourceDestinationAction from '../actions/view_by_source_destination';
+import DeleteRouteAction from '../actions/delete_route_action';
+import axios from 'axios';
 
 let dispatch;
 let count = 0;
@@ -16,7 +18,7 @@ let selectedOption;
 let selectedPlace;
 
 export const ViewRouteComponent = (props) => {
-
+    
     let [filter, setFilter] = useState();
     let [route, setRoute ] = useState();
     dispatch = useDispatch();
@@ -97,6 +99,7 @@ export const ViewRouteComponent = (props) => {
         }
     }
 
+
     const renderTableData = (routeList) => {
         console.log("routeList: ", routeList);
         return routeList.map((route) => {
@@ -106,7 +109,8 @@ export const ViewRouteComponent = (props) => {
                     <td>{source}</td>
                     <td>{destination}</td>
                     <td>{distance}</td>
-                    <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+                    <td><button type="submit" id="action" href="/" onClick={props.renderUpdateRouteComponent.bind(this, route, props)}>Edit</button>
+                    <button  type="submit" id="action" href="/" >Delete</button></td>
                 </tr>
             )
         });
@@ -171,5 +175,12 @@ function renderFilterList(filterList) {
         )
     })
 } 
+
+function renderUpdateRouteComponent(route) {
+    this.setRoute({ selected_route: route, renderForm: 'EDIT_ROUTE'});
+}
+
+
+
 
 

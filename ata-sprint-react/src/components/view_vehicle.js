@@ -74,10 +74,11 @@ export const ViewVehicleComponent = (props) => {
             });
         }
         if(selectedOption === "Vehicle No") {
+            console.log("VehicleNo from line 77: ", selectedValue);
             dispatch(GetVehicleByVehicleNo(selectedValue))
             .then((response) => {
-                console.log("Response: ", response);
-                console.log("vehicleList: ", vehicleList);
+                console.log("Vehicle no. Response: ", response);
+                console.log("Vehicle No. vehicleList: ", vehicleList);
                 setVehicle(vehicleList);
             });
         }
