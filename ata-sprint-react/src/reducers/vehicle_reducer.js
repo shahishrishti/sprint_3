@@ -32,7 +32,8 @@ const vehicleReducer = (state={vehicle: [] , filter: []},  action) =>{
             return state;
         case 'VIEW_Vehicle_BY_VEHICLE_NO':
                 console.log("vehicle No from reducer:",action.payload);
-                state.vehicle=action.payload;
+                state.vehicle=[action.payload];
+                console.log("Reducer vehicle:" ,state.vehicle);
                 return state;
         default:
             return state;
