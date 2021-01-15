@@ -1,10 +1,10 @@
 class Vehicle {
-  constructor(vehicleNo, vehicleName, typeId,fare, routeId) {
+  constructor(vehicleNo, vehicleName, typeId, fare, routeid) {
       this.vehicleNo = vehicleNo;
       this.vehicleName = vehicleName;
-      this.typeId = this.department = { "typeId": typeId};
+      this.vehicleType = {"typeId": typeId};
       this.fare = fare;
-      this.routeId = { "routeId": routeId};
+      this.route = { "routeid": routeid};
   }
 }
 
