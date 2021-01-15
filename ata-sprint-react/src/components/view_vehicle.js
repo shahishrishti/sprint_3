@@ -7,7 +7,7 @@ import GetAllVehicleName from '../actions/view_all_vehicleName';
 import GetAllVehicleNo from '../actions/view_all_vehicleNo';
 import GetVehicleByVehicleName from '../actions/view_by_vehicleName';
 import GetVehicleByVehicleNo from '../actions/view_by_vehicleNo';
-import GetVehicleByFare from '../actions/view_by_fare';
+
 
 let dispatch;
 let selectedOption;
