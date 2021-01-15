@@ -1,11 +1,11 @@
 class Driver{
-   constructor (driverName, address, licenseNo, contact, vehicleNo) {
-		
+   constructor (driverId, driverName, address,  contact, licenseNo, vehicleNo) {
+		this.driverId = driverId;
 		this.driverName = driverName;
-		this.address = address;
+    this.address = address;
+    this.contact = contact;
 		this.licenseNo = licenseNo;
-        this.contact = contact;
-        this.vehicle = {"vehicleNo": vehicleNo};
+    this.vehicle = {"vehicleNo": vehicleNo};
 
   }
 	}

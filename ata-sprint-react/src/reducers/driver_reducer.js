@@ -1,11 +1,29 @@
-const driverReducer = (state={drivers: []}, action) => {
+const driverReducer = (state={driver: [], filter: []}, action) => {
     switch(action.type) {
        
         case 'ADD_DRIVER':
             state.driver.push(action.payload);
-            return action.payload;
+            return state;
         case 'VIEW_DRIVER':
-            return action.payload;
+            console.log("Action: ", action.payload);
+            state.driver = action.payload;
+            return state;
+        case 'VIEW_DRIVER_BY_NAME':
+            console.log("Action For Source: ", action.payload);
+            state.driver = action.payload;
+            return state;
+        case 'VIEW_DRIVER_BY_LICENSENO':
+            console.log("Action For Source: ", action.payload);
+            state.driver = action.payload;
+            return state;
+        case 'VIEW__ALL_DRIVER_Name':
+            console.log("Filter driver Name from reducer:",action.payload);
+            state.filter=action.payload;
+            return state;
+        case 'VIEW__ALL_DRIVER_licenseno':
+            console.log("Filter license No. from reducer:",action.payload);
+            state.filter=action.payload;
+            return state;
         case 'DELETE_DRIVER':
             return action.payload;
         case 'EDIT_DRIVER':
