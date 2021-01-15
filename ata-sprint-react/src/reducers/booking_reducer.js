@@ -9,10 +9,10 @@ const bookingReducer = (state={booking:[]}, action) =>{
                 return state;
         case 'CANCEL_BOOKING':
             return action.payload;
-        case 'VIEW_BOOKING_BY_NAME':
-            return action.payload;
-        case 'VIEW_BOOKING_BY_NAME_AND_STATUS':
-            return action.payload;   
+        case 'VIEW_BOOKING_BY_STATUS':
+                console.log("action.payload from reducer: ", action.payload);
+                state.booking = action.payload;
+                return state;   
         default:
             return state;
     }
