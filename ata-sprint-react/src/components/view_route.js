@@ -18,7 +18,7 @@ let selectedOption;
 let selectedPlace;
 
 export const ViewRouteComponent = (props) => {
-
+    
     let [filter, setFilter] = useState();
     let [route, setRoute ] = useState();
     dispatch = useDispatch();
@@ -109,8 +109,8 @@ export const ViewRouteComponent = (props) => {
                     <td>{source}</td>
                     <td>{destination}</td>
                     <td>{distance}</td>
-                    <td><button type="submit" id="action" href="/">Edit</button>
-                    <button onClick={props.deleteRoute.bind(this)} type="submit" id="action" href="/">Delete</button></td>
+                    <td><button type="submit" id="action" href="/" onClick={props.renderUpdateRouteComponent.bind(this, route, props)}>Edit</button>
+                    <button  type="submit" id="action" href="/" >Delete</button></td>
                 </tr>
             )
         });
@@ -175,5 +175,12 @@ function renderFilterList(filterList) {
         )
     })
 } 
+
+function renderUpdateRouteComponent(route) {
+    this.setRoute({ selected_route: route, renderForm: 'EDIT_ROUTE'});
+}
+
+
+
 
 
