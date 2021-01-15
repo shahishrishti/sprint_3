@@ -5,9 +5,15 @@ const vehicleReducer = (state={vehicle: [] , filter: []},  action) =>{
             state.vehicle.push(action.payload);
             return state;
         case 'VIEW_VEHICLE':
+
             console.log("VEhicle from reducer: ", action.payload);
             state.vehicle=action.payload
             return state;           
+
+            console.log("action.payload from reducer: ", action.payload);
+            state.vehicle = action.payload;
+            return state;
+
         case 'DELETE_VEHICLE':
             return action.payload;
         case 'EDIT_VEHICLE':

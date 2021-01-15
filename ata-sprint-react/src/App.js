@@ -15,6 +15,7 @@ import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
 import { ViewDriverComponent } from './components/view_driver';
 import { ViewBookingComponent } from "./components/view_booking";
+import LandingComponent from "./components/Home";
 
 function App(props) {
   return (
@@ -36,6 +37,7 @@ function App(props) {
               <Link to="/editvehicle">Edit Vehicle</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/viewdriver">View Driver</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/booking">View Booking</Link>&nbsp;&nbsp;&nbsp;
+              <Link to="/home">Landing Page</Link>
           <hr />
   
         <Switch>
@@ -83,6 +85,9 @@ function App(props) {
             </Route>
             <Route path="/booking">
               <ViewBookingComponent/>
+            </Route>
+            <Route path="/home">
+              <LandingComponent/>
             </Route>
           </Switch> 
           </div>       
