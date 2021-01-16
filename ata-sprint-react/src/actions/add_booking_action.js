@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-let addBookingAction = (booking) =>{
+let addBookingAction = (bookingObj) =>{
+    console.log("booking Action",bookingObj);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:9090/cgata/booking", 
+            "http://localhost:9090/cgata/booking/add", 
                 { 
-                    name: booking.name, 
-                    bookingdate : booking.bookingdate,
-                    journeydate : booking.journeydate,
-                    vehicleType : booking.vehicle,
-                    route : {"routeId": booking.route.routeId},
-                    user : {"userId":booking.user.userId},
-                    fare : booking.fare,
-                    bookingStatus : booking.bookingStatus,
+                    bookingDate : bookingObj.bookingDate,
+                    journeyDate : bookingObj.journeyDate,
+                    vehicleType : bookingObj.vehicleType,
+                    route : {"routeid": bookingObj.route.routeid},
+                    user : {"userId":bookingObj.user.userId},
+                    fare : bookingObj.fare,
+                    bookingStatus : bookingObj.bookingStatus,
                 }, 
                 { 
                     "Content-type": "application/json; charset=UTF-8"

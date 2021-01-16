@@ -13,8 +13,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
+import userReducer from './reducers/user_reducer';
 
-let allReducers = combineReducers({'vehicleReducer':vehicleReducer,'routeReducer':routeReducer,  'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer, 'vehicletypeReducer':vehicletypeReducer});
+let allReducers = combineReducers({'vehicleReducer':vehicleReducer,'routeReducer':routeReducer,  'driverReducer':driverReducer, 'bookingReducer':bookingReducer, 'placeReducer':placeReducer, 'vehicletypeReducer':vehicletypeReducer, 'userReducer':userReducer});
 let store = createStore(allReducers,
   applyMiddleware(ReduxThunk));
  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));

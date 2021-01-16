@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/view_booking.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { ViewBookingAction } from "../actions/view_booking_action";
-
+import {NavBarComponent} from './navbar';
 let dispatch;
 export const ViewBookingComponent = (props) => {
     dispatch = useDispatch();
@@ -24,6 +24,7 @@ export const ViewBookingComponent = (props) => {
     }
      return(
          <body>
+             <NavBarComponent/>
         <div class="testbox">
                 <form action="/">
                     <div class="banner">
@@ -36,7 +37,6 @@ export const ViewBookingComponent = (props) => {
                     <thead>
                         <tr>
                         <th scope="col">Booking ID</th>
-                        <th scope="col">Journey Date</th>
                         <th scope="col">Booking Date</th>
                         <th scope="col">Cancel Date</th>
                         <th scope="col">Booking Status</th>
@@ -68,12 +68,11 @@ function renderTableData(bookingList) {
        // const routeid=booking.route.routeid;
         const source=booking.route.source;
         const destination=booking.route.destination;
-       const { bookingId,journeyDate,bookingDate,cancelDate,bookingStatus
+       const { bookingId,bookingDate,cancelDate,bookingStatus
     ,vehicleType,fare } = booking //destructuring
        return ( 
           <tr key={bookingId}>
              <td>{bookingId}</td>
-             <td>{journeyDate}</td>
              <td>{bookingDate}</td>
              <td>{cancelDate}</td>
              <td>{bookingStatus}</td>

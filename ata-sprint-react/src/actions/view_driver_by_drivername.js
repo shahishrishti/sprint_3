@@ -4,7 +4,7 @@ let GetDriverByNameAction = (driverName) => {
     console.log("ACTION");
     return async function (dispatch) {
         const res = await axios.get(
-            `http://localhost:9090/cgata/driver/${driverName}/filter`
+            `http://localhost:9090/cgata/driver/filter/${driverName}`
           );
           dispatch({type: "VIEW_DRIVER_BY_NAME", payload: res.data});
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/add_booking.css'
 import { useSelector, useDispatch } from 'react-redux'
 import ViewBookingByStatusAction from '../actions/view_booking_by_status_action'
-
+import {UserNavBarComponent} from './user_navbar';
 let dispatch;
 export const ViewBookingByStatusComponent = (props) =>{
 
@@ -26,14 +26,16 @@ export const ViewBookingByStatusComponent = (props) =>{
     }
         
     return (
+        <div>
+            <UserNavBarComponent/>
         <div class="testbox">
             <form onSubmit={handleSubmit}>
                 <div class="banner">
                     <h1>View Booking By Status</h1>
                 </div>
                 <div class="item">
-                    <p>Please enter the type of status for which you want to view bookings (Confirm/Pending)</p>
-                    <input type="text" name="bookingStatus" id="bookingStatus" placeholder="Enter status (Either Confirm/Pending)" />
+                    <p>Please enter the type of status for which you want to view bookings (Confirmed/Pending)</p>
+                    <input type="text" name="bookingStatus" id="bookingStatus" placeholder="Enter status (Either confirmed/Pending)" />
                 </div>
 
                 <div class="btn-block">
@@ -59,7 +61,7 @@ export const ViewBookingByStatusComponent = (props) =>{
                 </table>
             </form>
         </div>
-
+</div>
     );
 }
 
@@ -93,7 +95,7 @@ function handleSubmit(event) {
     if(bookingStatus===''){
         alert("Status cannot be blank");
         return;
-    }else if(bookingStatus==="Confirm" || bookingStatus==="Pending"){
+    }else if(bookingStatus==="confirmed" || bookingStatus==="Pending"){
         dispatch(ViewBookingByStatusAction(bookingStatus));
     }else{
         alert("Status should be either Confirm / Pending");

@@ -1,34 +1,41 @@
 import React from 'react';
-import '../css/add_route.css'
+import '../css/add_vehicle.css'
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import GetVehicleNoAction from '../actions/view_all_vehicleno_action';
-import AddDriverAction from '../actions/add_driver_action';
+import { useHistory } from "react-router-dom";
+import GetVehicleAction from '../actions/view_all_vehicle_action';
 import Driver from '../models/driver';
+import AddDriverAction from '../actions/add_driver_action';
+import {NavBarComponent} from './navbar';
+
 
 let dispatch;
+let history;
 let selectedVehicleNo;
+export const AddDriverComponent = (props) =>{
 
-export const AddDriverComponent = (props) => {
-  
-    dispatch = useDispatch();
-    let vehicleList = useSelector(state => state.vehicleReducer.vehicle);
-    console.log("vehicle List from line 15: ", vehicleList);
-   
-    React.useEffect(() => {
-        VehicleList()
-    }, []);
 
-    const VehicleList = () => {
-        console.log("HEllo");
-        dispatch(GetVehicleNoAction());
-    }
-    console.log("vehicleNo: ", vehicleList);
-    if(!Array.isArray(vehicleList)) {
-        vehicleList = [];
-        console.log("Set vehicleNoList to blank array");
-    }
+   dispatch = useDispatch();
+   history = useHistory();
+   let vehicleList = useSelector(state => state.vehicleReducer.vehicle);
+
+   React.useEffect(() =>{
+       VehicleList()
+   } , []);
+
+   const VehicleList = () =>{
+       console.log("hello");
+       dispatch(GetVehicleAction());
+   }
+   console.log("Route : ",vehicleList);
+   if(!Array.isArray(vehicleList)) {
+       vehicleList = [];
+       console.log("Set vehicleList to blank array");
+   }
+
     return (
-        <body>
+     <body>
+       <NavBarComponent/>
         <div class="testbox">
         <form onSubmit={handleSubmit}>
           <div class="banner">
@@ -46,12 +53,12 @@ export const AddDriverComponent = (props) => {
           </div>
           <div class="item">
             <p>Phone</p>
-            <input type="text" name="phone" placeholder="### ### ####"/>
+            <input type="text" name="contact" placeholder="### ### ####"/>
           </div>
           <div class="item">
             <p>License Number</p>
             <div class="address-item">
-              <input type="text" name="number" placeholder="Enter license number" />
+              <input type="text" name="licenseno" placeholder="Enter license number" />
             </div>
           </div>
           <div class="item">
@@ -61,62 +68,55 @@ export const AddDriverComponent = (props) => {
                     </select>
              </div>
           
-          
             <div class="btn-block">
-              <button type="submit" href="/">Add </button>
+              <button>Add </button>
             </div>
         </form>
         </div>
-      </body>  
+     </body>
+  
   );
 
-}
-
-
-function handleChangeVehicleNo(event){
-  selectedVehicleNo =event.target.value;
-  console.log("selected Vehicle : ",selectedVehicleNo);
+  function handleChangeVehicleNo(event){
+   selectedVehicleNo =event.target.value;
+   console.log("selected Vehicle No : ",selectedVehicleNo);
 }
 
 function renderVehicle(vehicleList){
-  console.log("vehicleList: ",vehicleList);
-  return vehicleList.map((vehicle) =>{
-      console.log("vehicleno: ", vehicle);
-      return(
-          <option key={vehicle} value={vehicle}>{vehicle}</option>
-      )
-  })
-};
-
-
+   console.log("vehicleList: ",vehicleList);
+   return vehicleList.map((vehicle) =>{
+       console.log("Vehicle from line 103: ", vehicle)
+       const {vehicleNo}=vehicle
+       return(
+           <option key={vehicleNo} value={vehicleNo}>{vehicleNo}</option>
+       )
+   })
+}
 
 function handleSubmit(event) {
-  event.preventDefault();
-  const data = new FormData(event.target)
-  const name=data.get('name');
+   event.preventDefault();
+   const data = new FormData(event.target);
+   const name=data.get('name');
   const address=data.get('address');
   const contact=data.get('contact');
   const licenseno=data.get('licenseno')
-  console.log(name);
-  console.log(address);
-  console.log(contact);
-  console.log(licenseno);
   if(name===''){
-      alert("Name cannot be blank");
-      return;
-  } else if(address==='') {
-      alert("Address  cannot be blank");
-      return;
-  }
-  else if(contact==='') {
-    alert("Contact  cannot be blank");
+    alert("Name cannot be blank");
+    return;
+} else if(address==='') {
+    alert("Address  cannot be blank");
     return;
 }
-else if(licenseno==='') {
-  alert("License number cannot be blank");
+else if(contact==='') {
+  alert("Contact  cannot be blank");
   return;
 }
-  console.log("VehicleNo ", selectedVehicleNo)
-  const driverObj = new Driver(name, address, contact, licenseno, selectedVehicleNo );
-  dispatch(AddDriverAction(driverObj));
+else if(licenseno==='') {
+alert("License number cannot be blank");
+return;
+}
+console.log("VehicleNo ", selectedVehicleNo)
+   const driverObj = new Driver(name, address, licenseno, contact,selectedVehicleNo );
+   dispatch(AddDriverAction(driverObj));
+}
 }

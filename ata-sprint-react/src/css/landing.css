@@ -25,11 +25,18 @@
     font-family: 'Carter One', cursive;
     font-size: 25px;
     margin:5px;
+    color: grey;
 }
 #statement{
     font-family: 'Balsamiq Sans', cursive;
 }
 
-.btn-block{
-    margin: 20px;
+button{
+    margin: 7px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }

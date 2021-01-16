@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import GetPlaceNameAction from '../actions/place_action';
 import AddRouteAction from '../actions/add_route_action';
 import Route from '../models/route';
+import { NavBarComponent } from './navbar';
 
 let dispatch;
 let selectedSource, selectedDestination;
@@ -28,6 +29,8 @@ export const AddRouteComponent = (props) => {
         console.log("Set placeList to blank array");
     }
     return (
+        <div>
+        <NavBarComponent/>
         <div className="testbox">
             <form onSubmit={handleSubmit}>
                 <div className="banner">
@@ -47,13 +50,13 @@ export const AddRouteComponent = (props) => {
                 </div>
                 <div className="item">
                     <p>Distance</p>
-                    <input type="number" id="distance" name="distance" placeholder="Enter distance" min="20" step="0.5"/>
+                    <input type="number" name="distance" placeholder="Enter distance" min="20" step="0.5"/>
                 </div>
                 <div className="btn-block">
                     <button>ADD ROUTE</button>
                 </div>
             </form>
-            <div className="item"></div>
+        </div>
         </div>
     );
 }
@@ -92,6 +95,6 @@ function handleSubmit(event) {
         return;
     }
     const routeObj = new Route(selectedSource, selectedDestination, distance);
-    dispatch(AddRouteAction(routeObj));
-    
+    dispatch(AddRouteAction(routeObj));    
+    alert("Route added successfully!!");
 }

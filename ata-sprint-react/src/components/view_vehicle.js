@@ -7,7 +7,7 @@ import GetAllVehicleName from '../actions/view_all_vehicleName';
 import GetAllVehicleNo from '../actions/view_all_vehicleNo';
 import GetVehicleByVehicleName from '../actions/view_by_vehicleName';
 import GetVehicleByVehicleNo from '../actions/view_by_vehicleNo';
-
+import {NavBarComponent} from './navbar';
 
 let dispatch;
 let selectedOption;
@@ -88,6 +88,7 @@ export const ViewVehicleComponent = (props) => {
 
     return(
         <body>
+            <NavBarComponent/>
              <div class="testbox" >
                 <form onSubmit={handleSubmit}>
                    <div class="banner">
@@ -121,7 +122,7 @@ export const ViewVehicleComponent = (props) => {
                         <th scope="col">Seating Capacity</th>
                         <th scope="col">Fare</th>
                         <th scope="col">Route</th>
-                        <th scope="col">Action</th>
+                        {/* <th scope="col">Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -152,7 +153,7 @@ function renderTableData(vehicleList) {
              <td>{seatingCapacity}</td>
              <td>{fare}</td>
              <td>{route}</td>
-             <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
+             {/* <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td> */}
           </tr>
        )
     })

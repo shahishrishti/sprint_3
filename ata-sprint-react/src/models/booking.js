@@ -1,16 +1,18 @@
 class Booking {
-    constructor(bookingId, userid,routeid,journeydate,bookingdate,canceldate,bookingstatus,vehicletype,fare) {
-     this.bookingId=bookingId;
-     this.userid=userid;
-     this.routeid=routeid;
-     this.journeydate=journeydate;
-     this.bookingdate=bookingdate;
-     this.canceldate=canceldate;
-     this.bookingstatus=bookingstatus;
-     this.vehicletype=vehicletype;
-     this.fare=fare;
-    }
+  constructor(journeyDate,bookingDate,vehicleType,routeid,userId,fare,bookingStatus){
+      this.journeyDate=journeyDate;
+      this.bookingDate=bookingDate;
+      this.vehicleType=vehicleType;
+      
+      //this.routeid={"routeid": routeid};
+      this.route={"routeid": routeid};
+
+      //this.userId={"userId": userId};
+      this.user={"userId": userId};
+
+      this.fare=fare;
+      this.bookingStatus=bookingStatus;
   }
-  
-  export default Booking;
+}
+export default Booking;
   

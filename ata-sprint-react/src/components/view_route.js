@@ -9,16 +9,14 @@ import GetAllSourceDestinationAction from '../actions/view_all_source_destinatio
 import GetRouteBySourceAction from '../actions/view_by_source';
 import GetRouteByDestinationAction from '../actions/view_by_destination';
 import GetRouteBySourceDestinationAction from '../actions/view_by_source_destination';
-import DeleteRouteAction from '../actions/delete_route_action';
-import axios from 'axios';
-
+import {NavBarComponent} from './navbar';
 let dispatch;
 let count = 0;
 let selectedOption;
 let selectedPlace;
 
 export const ViewRouteComponent = (props) => {
-    
+
     let [filter, setFilter] = useState();
     let [route, setRoute ] = useState();
     dispatch = useDispatch();
@@ -99,7 +97,6 @@ export const ViewRouteComponent = (props) => {
         }
     }
 
-
     const renderTableData = (routeList) => {
         console.log("routeList: ", routeList);
         return routeList.map((route) => {
@@ -109,25 +106,15 @@ export const ViewRouteComponent = (props) => {
                     <td>{source}</td>
                     <td>{destination}</td>
                     <td>{distance}</td>
-                    <td><button type="submit" id="action" href="/">Edit</button>
-                    <button  type="submit" id="action" href="/" onClick={(e) => deleteRoute(e,routeid)}>Delete</button></td>
+                    <td><button type="submit" id="action" href="/">Edit</button><button type="submit" id="action" href="/">Delete</button></td>
                 </tr>
             )
         });
     }
 
-    const deleteRoute=(event,routeid)=>{
-        event.preventDefault();
-        console.log("routeid",routeid);
-        dispatch(DeleteRouteAction(routeid))
-        .then((response)=>{
-            console.log("REsponse: ", response);
-            console.log("routeList: ", routeList);
-            setRoute(routeList);
-        });
-    }
-
     return (
+        <div>
+            <NavBarComponent/>
         <div class="testbox">
             <form  onSubmit={handleSubmit}>
                 <div class="banner">
@@ -168,6 +155,7 @@ export const ViewRouteComponent = (props) => {
                 </div>
             </form>
         </div>
+        </div>
     );
 }
 
@@ -188,8 +176,3 @@ function renderFilterList(filterList) {
 } 
 
 
-
-/*function renderUpdateRouteComponent(route) {
-   this.setRoute({ selected_route: route, renderForm: 'EDIT_ROUTE'});
-}
-*/

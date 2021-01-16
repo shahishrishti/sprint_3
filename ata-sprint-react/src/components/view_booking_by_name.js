@@ -3,6 +3,7 @@ import '../css/add_booking.css'
 import { useSelector, useDispatch } from 'react-redux'
 import ViewBookingByNameAction from '../actions/view_booking_by_name_action';
 import {useRef} from 'react'
+import {UserNavBarComponent} from './user_navbar';
 
 let dispatch;
 export const ViewBookingByNameComponent = (props) =>{

@@ -7,7 +7,7 @@ import addVehicleAction from '../actions/add_vehicle_action'
 import GetRouteAction from '../actions/view_all_route_action';
 import GetVehicleTypeAction from '../actions/vehicleType_action';
 import Vehicle from '../models/vehicle';
-
+import {NavBarComponent} from'./navbar';
 
 let dispatch;
 let history;
@@ -52,6 +52,7 @@ export const AddVehicleComponent = (props) =>{
    }
     return (
      <body>
+         <NavBarComponent/>
         <div class="testbox">
             <form onSubmit={handleSubmit}>
               <div class="banner">
@@ -148,4 +149,5 @@ function handleSubmit(event) {
    console.log("VehicleType: ", selectedtypeId)
    const vehicleObj = new Vehicle(vehicleNo, vehicleName, selectedtypeId, fare, selectedRouteId );
    dispatch(addVehicleAction(vehicleObj));
+   alert("Vehicle added successfully!!");
 }

@@ -7,21 +7,24 @@ import { AddVehicleComponent } from './components/add_vehicle';
 import {AddDriverComponent} from './components/add_driver';
 import { ViewRouteComponent } from './components/view_route';
 import { ViewVehicleComponent } from './components/view_vehicle';
-import { HomePageComponent } from './components/home_page';
-import { ViewBookingByStatusComponent } from './components/view_booking_by_status';
+import { UserPageComponent } from './components/user';
+import { ViewBookingByNameAndStatusComponent } from './components/view_booking_by_name_and_status';
+import { ViewBookingByNameComponent } from './components/view_booking_by_name';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
 import { ViewDriverComponent } from './components/view_driver';
 import { ViewBookingComponent } from "./components/view_booking";
+import { AdminPageComponent } from './components/admin';
 import LandingComponent from "./components/Home";
+import { ViewBookingByStatusComponent } from './components/view_booking_by_status';
 
 function App(props) {
   return (
       <Router>
       <div className="App">
         
-              <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
+              {/* <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewroute">View Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/addroute">Add Route</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewvehicle">View Vehicle</Link> &nbsp;&nbsp;&nbsp;
@@ -29,6 +32,7 @@ function App(props) {
               <Link to="/addbooking">Add Booking</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/adddriver">Add Driver</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/editdriver">Edit Driver</Link> &nbsp;&nbsp;&nbsp;
+              <Link to="/viewbookingbyname">View Booking By Name</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewbookingbystatus">View Booking By Status</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
@@ -36,11 +40,11 @@ function App(props) {
               <Link to="/viewdriver">View Driver</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/booking">View Booking</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/home">Landing Page</Link>
-          <hr />
+          <hr /> */}
   
         <Switch>
-            <Route exact path="/">
-              <HomePageComponent />
+            <Route exact path="/user">
+              <UserPageComponent />
             </Route>
             <Route path="/viewroute">
               <ViewRouteComponent store={props.store}/>
@@ -63,6 +67,12 @@ function App(props) {
             <Route path="/editdriver">
               <ModifyDriverComponent/>
             </Route>
+            {/* <Route path="/viewbookingbyname">
+              <ViewBookingByNameComponent/>
+            </Route>
+            <Route path="/viewbookingbystatus">
+              <ViewBookingByNameAndStatusComponent/>
+            </Route> */}
             <Route path="/viewbookingbystatus">
               <ViewBookingByStatusComponent/>
             </Route>
@@ -81,8 +91,11 @@ function App(props) {
             <Route path="/booking">
               <ViewBookingComponent/>
             </Route>
-            <Route path="/home">
+            <Route exact path="/">
               <LandingComponent/>
+            </Route>
+            <Route path="/admin">
+              <AdminPageComponent/>
             </Route>
           </Switch> 
           </div>       

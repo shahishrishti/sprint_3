@@ -8,7 +8,7 @@ import GetDriverByNameAction from '../actions/view_driver_by_drivername';
 import GetDriverByLicensenoAction from '../actions/view_driver_by_licenseno';
 import GetAllDriverName from '../actions/view_all_drivername';
 import  GetAllDriverLicenseno from '../actions/view_all_licenseno'
- 
+import {NavBarComponent} from'./navbar';
 let dispatch;
 let count = 0;
 let selectedOption;
@@ -65,18 +65,16 @@ export const ViewDriverComponent = (props) => {
 const handleSubmit = (event) => {
     event.preventDefault();
     if(selectedOption === "Driver Name") {
-        console.log("Driver name from line 68: ", selectedValue);
         dispatch(GetDriverByNameAction(selectedValue))
         .then((response) => {
-            console.log("Driver name REsponse: ", response);
+            console.log("REsponse: ", response);
             console.log("routeList: ", driverList);
             setDriver(driverList);
         });
     } else if(selectedOption === "Licenseno") {
-        console.log("license no from line 76",selectedValue);
         dispatch(GetDriverByLicensenoAction(selectedValue))
         .then((response) => {
-            console.log("License No Response: ", response);
+            console.log("REsponse: ", response);
             console.log("routeList: ", driverList);
             setDriver(driverList);
         });
@@ -84,6 +82,8 @@ const handleSubmit = (event) => {
     }
 
     return (
+        <div>
+            <NavBarComponent/>
         <div class="testbox">
             <form onSubmit={handleSubmit}>
                 <div class="banner">
@@ -105,7 +105,7 @@ const handleSubmit = (event) => {
                     </div>
 
                     <div class="btn-block">
-                    <button>View</button>
+                    <button type="submit" href="/">View</button>
                 </div>
                 <div class="item">
                <table class="content-table">
@@ -126,6 +126,7 @@ const handleSubmit = (event) => {
                 </table>
                 </div>
             </form>
+        </div>
         </div>
     );
 }

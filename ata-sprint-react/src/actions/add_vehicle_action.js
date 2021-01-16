@@ -4,7 +4,7 @@ let addVehicleAction = (vehicleObj) =>{
     console.log("vehicle obj from action: ", vehicleObj);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:8080/cgata/vehicle/add", 
+            "http://localhost:9090/cgata/vehicle/add", 
                 { 
                     vehicleNo: vehicleObj.vehicleNo, 
                     vehicleName : vehicleObj.vehicleName, 
