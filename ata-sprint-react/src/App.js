@@ -8,8 +8,7 @@ import {AddDriverComponent} from './components/add_driver';
 import { ViewRouteComponent } from './components/view_route';
 import { ViewVehicleComponent } from './components/view_vehicle';
 import { HomePageComponent } from './components/home_page';
-import { ViewBookingByNameAndStatusComponent } from './components/view_booking_by_name_and_status';
-import { ViewBookingByNameComponent } from './components/view_booking_by_name';
+import { ViewBookingByStatusComponent } from './components/view_booking_by_status';
 import { CancelBookingComponent } from './components/cancel_booking';
 import { UpdateRouteComponent } from './components/update_route';
 import { ModifyVehicleComponent } from './components/modify_vehicle';
@@ -30,7 +29,6 @@ function App(props) {
               <Link to="/addbooking">Add Booking</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/adddriver">Add Driver</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/editdriver">Edit Driver</Link> &nbsp;&nbsp;&nbsp;
-              <Link to="/viewbookingbyname">View Booking By Name</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/viewbookingbystatus">View Booking By Status</Link> &nbsp;&nbsp;&nbsp;
               <Link to="/cancelbooking">Cancel Booking</Link>&nbsp;&nbsp;&nbsp;
               <Link to="/editroute">Edit Route</Link> &nbsp;&nbsp;&nbsp;
@@ -65,11 +63,8 @@ function App(props) {
             <Route path="/editdriver">
               <ModifyDriverComponent/>
             </Route>
-            <Route path="/viewbookingbyname">
-              <ViewBookingByNameComponent/>
-            </Route>
             <Route path="/viewbookingbystatus">
-              <ViewBookingByNameAndStatusComponent/>
+              <ViewBookingByStatusComponent/>
             </Route>
             <Route path="/cancelbooking">
               <CancelBookingComponent/>

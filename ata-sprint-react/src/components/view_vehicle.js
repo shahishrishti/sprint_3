@@ -7,7 +7,7 @@ import GetAllVehicleName from '../actions/view_all_vehicleName';
 import GetAllVehicleNo from '../actions/view_all_vehicleNo';
 import GetVehicleByVehicleName from '../actions/view_by_vehicleName';
 import GetVehicleByVehicleNo from '../actions/view_by_vehicleNo';
-import GetVehicleByFare from '../actions/view_by_fare';
+
 
 let dispatch;
 let selectedOption;
@@ -74,10 +74,11 @@ export const ViewVehicleComponent = (props) => {
             });
         }
         if(selectedOption === "Vehicle No") {
+            console.log("VehicleNo from line 77: ", selectedValue);
             dispatch(GetVehicleByVehicleNo(selectedValue))
             .then((response) => {
-                console.log("Response: ", response);
-                console.log("vehicleList: ", vehicleList);
+                console.log("Vehicle no. Response: ", response);
+                console.log("Vehicle No. vehicleList: ", vehicleList);
                 setVehicle(vehicleList);
             });
         }
