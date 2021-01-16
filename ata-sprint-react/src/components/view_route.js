@@ -109,10 +109,21 @@ export const ViewRouteComponent = (props) => {
                     <td>{source}</td>
                     <td>{destination}</td>
                     <td>{distance}</td>
-                    <td><button type="submit" id="action" href="/" onClick={props.renderUpdateRouteComponent.bind(this, route, props)}>Edit</button>
-                    <button  type="submit" id="action" href="/" >Delete</button></td>
+                    <td><button type="submit" id="action" href="/">Edit</button>
+                    <button  type="submit" id="action" href="/" onClick={(e) => deleteRoute(e,routeid)}>Delete</button></td>
                 </tr>
             )
+        });
+    }
+
+    const deleteRoute=(event,routeid)=>{
+        event.preventDefault();
+        console.log("routeid",routeid);
+        dispatch(DeleteRouteAction(routeid))
+        .then((response)=>{
+            console.log("REsponse: ", response);
+            console.log("routeList: ", routeList);
+            setRoute(routeList);
         });
     }
 
@@ -176,11 +187,9 @@ function renderFilterList(filterList) {
     })
 } 
 
-function renderUpdateRouteComponent(route) {
-    this.setRoute({ selected_route: route, renderForm: 'EDIT_ROUTE'});
+
+
+/*function renderUpdateRouteComponent(route) {
+   this.setRoute({ selected_route: route, renderForm: 'EDIT_ROUTE'});
 }
-
-
-
-
-
+*/
