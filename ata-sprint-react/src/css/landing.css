@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Carter+One&display=swap');
+
+#landing {
+    background-image: url(../images/bg.png);
+    width: 100%;
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+}
+
+#content {
+    height: 200px;
+    width: 600px;
+    position: fixed;
+    top: 55%;
+    left: 73%;
+    margin-top: -100px;
+    margin-left: -200px;
+    text-align: center;
+}
+
+#quote{
+    font-family: 'Carter One', cursive;
+    font-size: 25px;
+    margin:5px;
+    color: grey;
+}
+#statement{
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+button{
+    margin: 7px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
