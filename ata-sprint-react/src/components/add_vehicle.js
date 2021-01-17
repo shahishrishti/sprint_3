@@ -18,7 +18,7 @@ export const AddVehicleComponent = (props) =>{
 
    dispatch = useDispatch();
    history = useHistory();
-   let routeList = useSelector(state => state.routeReducer.route);
+   let routeList = useSelector(state => state.routeReducer.routes);
    let vehicletypeList = useSelector(state => state.vehicletypeReducer.vehicletype);
 
    React.useEffect(() =>{
